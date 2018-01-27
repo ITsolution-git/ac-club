@@ -15,24 +15,25 @@
         <function name="install_lang" model="res.lang"/>
 
         <record id="main_partner" model="res.partner" context="{'default_is_company': True}">
-            <field name="name">My Company</field>
+            <field name="name">Asia Club</field>
             <field name="company_id" eval="None"/>
-            <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+            <!-- <field name="image" type="base64" file="base/static/img/main_partner-image.png"/> -->
+            <field name="image" type="base64" file="base/static/img/company-logo.png"/>
             <field name="customer" eval="False"/>
             <field name="is_company" eval="True"/>
             <field name="street"></field>
             <field name="city"></field>
             <field name="zip"></field>
             <field name="phone"></field>
-            <field name="email">info@yourcompany.com</field>
-            <field name="website">www.yourcompany.com</field>
+            <field name="email">info@asiaclub.com</field>
+            <field name="website">www.asiaclub.com</field>
         </record>
 
         <!-- Basic Company  -->
         <record id="main_company" model="res.company">
-            <field name="name">My Company</field>
+            <field name="name">Asia Club</field>
             <field name="partner_id" ref="main_partner"/>
-            <field name="rml_header1">My Company Tagline</field>
+            <field name="rml_header1">Asia Club Tagline</field>
             <field name="currency_id" ref="base.EUR"/>
         </record>
 
@@ -40,7 +41,7 @@
             <field name="name">Administrator</field>
             <field name="company_id" ref="main_company"/>
             <field name="customer" eval="False"/>
-            <field name="email">admin@example.com</field>
+            <field name="email">admin@asiaclub.com</field>
         </record>
 
         <record model="res.users" id="base.user_root">
