@@ -18,7 +18,7 @@
             <field name="name">Asia Club</field>
             <field name="company_id" eval="None"/>
             <!-- <field name="image" type="base64" file="base/static/img/main_partner-image.png"/> -->
-            <field name="image" type="base64" file="base/static/img/company-logo.png"/>
+            <field name="image" type="base64" file="base/static/img/company_logo.png"/>
             <field name="customer" eval="False"/>
             <field name="is_company" eval="True"/>
             <field name="street"></field>
