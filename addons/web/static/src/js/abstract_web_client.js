@@ -51,7 +51,7 @@ var WebClient = Widget.extend({
         this._current_state = null;
         this.menu_dm = new utils.DropMisordered();
         this.action_mutex = new utils.Mutex();
-        this.set('title_part', {"zopenerp": "Odoo"});
+        this.set('title_part', {"zopenerp": "Asia Club"});
     },
     start: function() {
         var self = this;
@@ -180,7 +180,7 @@ var WebClient = Widget.extend({
         _.each(parts, function(part) {
             var str = this.get("title_part")[part];
             if (str) {
-                tmp = tmp ? tmp + " - " + str : str;
+                tmp = tmp ? tmp + " | " + str : str;
             }
         }, this);
         document.title = tmp;
