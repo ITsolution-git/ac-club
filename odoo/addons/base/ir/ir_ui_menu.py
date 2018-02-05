@@ -115,7 +115,7 @@ class IrUiMenu(models.Model):
             'ir.actions.server': 'model_id',
         }
         
-        namelist = ['Dashboard']
+        namelist = ['Dashboard', 'Discuss'] 
         for menu in action_menus:
             fname = model_fname.get(menu.action._name)
             if not fname or not menu.action[fname] or \
