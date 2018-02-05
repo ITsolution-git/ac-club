@@ -692,10 +692,12 @@ class ResourceResource(models.Model):
     _name = "resource.resource"
     _description = "Resource Detail"
 
-    name = fields.Char(required=True)
+    name = fields.Char(related='user_id.name', string="Resource Name", required=True)
     code = fields.Char(copy=False)
-    active = fields.Boolean(track_visibility='onchange', default=True,
-        help="If the active field is set to False, it will allow you to hide the resource record without removing it.")
+    # active = fields.Boolean(track_visibility='onchange', default=True,
+        # help="If the active field is set to False, it will allow you to hide the resource record without removing it.")
+
+    active = fields.Boolean(related="user_id.active", default=True)
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env['res.company']._company_default_get())
     resource_type = fields.Selection([
         ('user', 'Human'),
@@ -705,6 +707,7 @@ class ResourceResource(models.Model):
     time_efficiency = fields.Float(string='Efficiency Factor', required=True, default=100,
         help="This field depict the efficiency of the resource to complete tasks. e.g  resource put alone on a phase of 5 days with 5 tasks assigned to him, will show a load of 100% for this phase by default, but if we put a efficiency of 200%, then his load will only be 50%.")
     calendar_id = fields.Many2one("resource.calendar", string='Working Time', help="Define the schedule of resource")
+
 
     @api.multi
     @api.constrains('time_efficiency')

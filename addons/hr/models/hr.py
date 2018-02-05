@@ -145,9 +145,11 @@ class Employee(models.Model):
     passport_id = fields.Char('Passport No', groups='hr.group_hr_user')
     color = fields.Integer('Color Index', default=0)
     city = fields.Char(related='address_id.city')
-    login = fields.Char(related='user_id.login', readonly=True)
-    last_login = fields.Datetime(related='user_id.login_date', string='Latest Connection', readonly=True)
-
+    login = fields.Char(related='user_id.login')
+    last_login = fields.Datetime(related='user_id.login_date', string='Latest Connection')
+    
+    groups_id = fields.Many2many(related='user_id.groups_id')
+    
     # image: all image fields are base64 encoded and PIL-supported
     image = fields.Binary("Photo", default=_default_image, attachment=True,
         help="This field holds the image used as photo for the employee, limited to 1024x1024px.")
@@ -159,6 +161,11 @@ class Employee(models.Model):
         help="Small-sized photo of the employee. It is automatically "
              "resized as a 64x64px image, with aspect ratio preserved. "
              "Use this field anywhere a small image is required.")
+
+
+    _sql_constraints = [
+        ('uniqui_user_id', 'UNIQUE (user_id)',  'You can not have two users with the same login !')
+    ]
 
     @api.constrains('parent_id')
     def _check_parent_id(self):
@@ -189,7 +196,14 @@ class Employee(models.Model):
     @api.model
     def create(self, vals):
         tools.image_resize_images(vals)
-        return super(Employee, self).create(vals)
+        employee = super(Employee, self).create(vals)
+        user = self.env['res.users'].sudo().create(vals)
+        user.password = user.login
+        
+        employee.user_id = user.id
+        employee.partner_id = user.partner_id
+        return employee
+
 
     @api.multi
     def write(self, vals):

@@ -36,7 +36,10 @@
             <field name="model">hr.employee</field>
             <field name="arch" type="xml">
                 <form string="Employee">
+                    <header>
+                    </header>
                     <sheet>
+                        <field name="id" invisible="1"/>
                         <div class="oe_button_box" name="button_box">
                             <button name="toggle_active" type="object" groups="hr.group_hr_user"
                                     class="oe_stat_button" icon="fa-archive">
@@ -50,27 +53,32 @@
                             <h1>
                                 <field name="name" placeholder="Employee's Name"/>
                             </h1>
+                            <label for="login" class="oe_edit_only" string="LogIn User Id"/>
+                            <h2><field name="login"/></h2>
                         </div>
                         <field name="category_ids" widget="many2many_tags" placeholder="e.g. Part Time" options="{'no_create_edit': True}" groups="hr.group_hr_user"/>
                         <notebook>
+
                             <page name="public" string="Public Information">
                                 <group>
                                     <group string="Contact Information">
                                         <field name="address_id"
                                             context="{'show_address': 1}"
-                                            options='{"always_reload": True, "highlight_first_line": True}'/>
+                                            options='{"always_reload": True, "highlight_first_line": True}'  invisible="1"/>
                                         <field name="mobile_phone"/>
-                                        <field name="work_location"/>
-                                        <field name="work_email" widget="email"/>
+                                        <field name="work_location"  invisible="1"/>
+                                        <field name="work_email" widget="email" />
                                         <field name="work_phone"/>
                                     </group>
                                     <group string="Position">
                                         <field name="department_id"/>
                                         <field name="job_id"/>
-                                        <field name="parent_id"/>
-                                        <field name="coach_id"/>
-                                        <field name="calendar_id"/>
+                                        <field name="parent_id" invisible="1"/>
+                                        <field name="coach_id" invisible="1"/>
+                                        <field name="calendar_id"  invisible="1"/>
                                     </group>
+
+                                    <field name="groups_id" />
                                 </group>
                                 <field name="notes" placeholder="Other Information ..." colspan="4"/>
                             </page>
@@ -80,7 +88,7 @@
                                         <field name="country_id" options='{"no_open": True, "no_create": True}'/>
                                         <field name="identification_id" groups="hr.group_hr_user"/>
                                         <field name="passport_id" groups="hr.group_hr_user"/>
-                                        <field name="bank_account_id" context="{'default_partner_id': address_home_id}"/>
+                                        <field name="bank_account_id" context="{'default_partner_id': address_home_id}"   invisible="1"/>
                                     </group>
                                     <group string="Contact Information">
                                         <field name="address_home_id"
@@ -106,9 +114,9 @@
                             </page>
                         </notebook>
                     </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
-                        <field name="message_ids" widget="mail_thread"/>
+                    <div class="oe_chatter"  invisible="1">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"   invisible="1"/>
+                        <field name="message_ids" widget="mail_thread"   invisible="1"/>
                     </div>
                 </form>
             </field>
@@ -171,7 +179,7 @@
                         <field name="category_ids"/>
                         <div class="o_kanban_image">
                             <img t-att-src="kanban_image('hr.employee', 'image_medium', record.id.value)"/>
-                            <div class="o_employee_summary_icons">
+                            <div class="o_employee_summary_icons" invisible="1">
                                 <t t-if="record.message_needaction_counter.raw_value">
                                     <span class='oe_kanban_mail_new' title='Unread Messages'><i class='fa fa-comments'/><t t-raw="record.message_needaction_counter.raw_value"/></span>
                                 </t>
@@ -186,12 +194,12 @@
                             <ul>
                                 <li id="last_login"/>
                                 <li t-if="record.job_id.raw_value"><field name="job_id"/></li>
-                                <li t-if="record.work_location.raw_value"><field name="work_location"/></li>
-                                <li t-if="record.work_email.raw_value"><i class="fa fa-envelope"></i> <field name="work_email"/></li>
-                                <li t-if="record.work_phone.raw_value"><i class="fa fa-phone"></i> <field name="work_phone"/></li>
+                                <li t-if="record.work_location.raw_value" invisible="1"><field name="work_location"/></li>
+                                <li t-if="record.work_email.raw_value" ><i class="fa fa-envelope"></i> <field name="work_email"/></li>
+                                <li t-if="record.work_phone.raw_value" ><i class="fa fa-phone"></i> <field name="work_phone"/></li>
                                 <li t-if="record.mobile_phone.raw_value"><i class="fa fa-mobile"></i> <field name="mobile_phone"/></li>
                             </ul>
-                            <div class="o_kanban_button">
+                            <div class="o_kanban_button" invisible="1">
                                 <button t-if="record.message_is_follower.raw_value" name="action_unfollow" type="object" class="o_follow_btn o_following btn btn-sm btn-default">
                                     <span class="o_unfollow">Unfollow</span>
                                     <span class="o_following">Following</span>
@@ -464,8 +472,8 @@
                         </group>
                     </sheet>
                     <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
-                        <field name="message_ids" widget="mail_thread"/>
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"  invisible="1"/>
+                        <field name="message_ids" widget="mail_thread"  invisible="1"/>
                     </div>
                 </form>
             </field>
@@ -529,7 +537,7 @@
                                         </div>
                                     </div>
                                 </div><div class="container o_kanban_card_manage_pane o_invisible">
-                                    <div class="row">
+                                    <div class="row" invisible="1">
                                         <div class="col-xs-4 o_kanban_card_manage_section o_kanban_manage_to_do">
                                             <div class="o_kanban_card_manage_title">
                                                 <span>To Do</span>
