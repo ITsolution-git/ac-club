@@ -115,13 +115,14 @@ class IrUiMenu(models.Model):
             'ir.actions.server': 'model_id',
         }
         
-        namelist = ['Dashboard', 'Discuss'] 
+        namelist = ['Dashboard', 'Discuss', 'General Settings'] 
+        
         for menu in action_menus:
             fname = model_fname.get(menu.action._name)
             if not fname or not menu.action[fname] or \
                     access.check(menu.action[fname], 'read', False):
                 # make menu visible, and its folder ancestors, too
-                if((self.env.user.id == 1) or (menu.name not in namelist)):
+                if((menu.name not in namelist)):
                     visible += menu
                 menu = menu.parent_id
                 while menu and menu in folder_menus and menu not in visible:
