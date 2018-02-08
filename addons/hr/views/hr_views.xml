@@ -55,8 +55,9 @@
                             </h1>
                             <label for="login" class="oe_edit_only" string="LogIn User Id"/>
                             <h2><field name="login"/></h2>
+
+                            <field name="category_ids" widget="many2many_tags" placeholder="e.g. Part Time" options="{'no_create_edit': True}" groups="hr.group_hr_user"/>
                         </div>
-                        <field name="category_ids" widget="many2many_tags" placeholder="e.g. Part Time" options="{'no_create_edit': True}" groups="hr.group_hr_user"/>
                         <notebook>
 
                             <page name="public" string="Public Information">
@@ -65,6 +66,7 @@
                                         <field name="address_id"
                                             context="{'show_address': 1}"
                                             options='{"always_reload": True, "highlight_first_line": True}'  invisible="1"/>
+                                        
                                         <field name="mobile_phone"/>
                                         <field name="work_location"  invisible="1"/>
                                         <field name="work_email" widget="email" />
@@ -78,7 +80,6 @@
                                         <field name="calendar_id"  invisible="1"/>
                                     </group>
 
-                                    <field name="groups_id" />
                                 </group>
                                 <field name="notes" placeholder="Other Information ..." colspan="4"/>
                             </page>
@@ -93,7 +94,16 @@
                                     <group string="Contact Information">
                                         <field name="address_home_id"
                                             context="{'show_address': 1}"
-                                            options='{"always_reload": True, "highlight_first_line": True}'/>
+                                            options='{"always_reload": True, "highlight_first_line": True}' invisible="1"/>
+                                        <label for="street" string="Address"/>
+                                        <div class="o_address_format">
+                                            <field name="street" placeholder="Street..." class="o_address_street"/>
+                                            <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                            <field name="city" placeholder="City" class="o_address_city"/>
+                                            <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+                                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                            <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                                        </div>
                                     </group>
                                     <group string="Status">
                                         <field name="gender"/>
@@ -104,7 +114,7 @@
                                     </group>
                                 </group>
                             </page>
-                            <page name="hr_settings" string="HR Settings" groups="hr.group_hr_user">
+                            <page name="hr_settings" string="HR Settings" groups="hr.group_hr_user" invisible="1">
                                 <group>
                                     <group string='Status' name="active_group">
                                         <field name="company_id" groups="base.group_multi_company"/>
@@ -363,8 +373,10 @@
                             <label for="description"/>
                             <field name="description"/>
                         </div>
+                        
+                        <field name="groups_id" />
                     </sheet>
-                    <div class="oe_chatter">
+                    <div class="oe_chatter" invisible="1">
                         <field name="message_follower_ids" widget="mail_followers"/>
                     </div>
                 </form>
@@ -430,6 +442,13 @@
               </p>
             </field>
         </record>
+
+        <menuitem
+            id="menu_view_hr_job_form"
+            action="action_hr_job"
+            parent="menu_human_resources_configuration"
+            groups="base.group_no_one"
+            sequence="1"/>
 
         <record id="act_employee_from_department" model="ir.actions.act_window">
             <field name="name">Employees</field>

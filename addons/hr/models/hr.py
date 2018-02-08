@@ -31,6 +31,10 @@ class Job(models.Model):
     _name = "hr.job"
     _description = "Job Position"
     _inherit = ['mail.thread']
+    
+    def _default_groups(self):
+        default_user = self.env.ref('base.default_user', raise_if_not_found=False)
+        return (default_user or self.env['res.users']).sudo().groups_id
 
     name = fields.Char(string='Job Title', required=True, index=True, translate=True)
     expected_employees = fields.Integer(compute='_compute_employees', string='Total Forecasted Employees', store=True,
@@ -51,6 +55,8 @@ class Job(models.Model):
         ('open', 'Not Recruiting')
     ], string='Status', readonly=True, required=True, track_visibility='always', copy=False, default='recruit', help="Set whether the recruitment process is open or closed for this job position.")
 
+    groups_id = fields.Many2many('res.groups', 'res_groups_users_rel', 'uid', 'gid', string='Groups', default=_default_groups)
+    
     _sql_constraints = [
         ('name_company_uniq', 'unique(name, company_id, department_id)', 'The name of the job position must be unique per department in company!'),
     ]
@@ -150,6 +156,13 @@ class Employee(models.Model):
     
     groups_id = fields.Many2many(related='user_id.groups_id')
     
+    street = fields.Char(related='user_id.partner_id.street')
+    street2 = fields.Char(related='user_id.partner_id.street2')
+    zip = fields.Char(related='user_id.partner_id.zip')
+    city = fields.Char(related='user_id.partner_id.city')
+    state_id = fields.Many2one(related='user_id.partner_id.state_id')
+    country_id = fields.Many2one(related='user_id.partner_id.country_id')
+
     # image: all image fields are base64 encoded and PIL-supported
     image = fields.Binary("Photo", default=_default_image, attachment=True,
         help="This field holds the image used as photo for the employee, limited to 1024x1024px.")
@@ -173,6 +186,10 @@ class Employee(models.Model):
             if not employee._check_recursion():
                 raise ValidationError(_('Error! You cannot create recursive hierarchy of Employee(s).'))
 
+    @api.onchange('job_id')
+    def _onchange_job(self):
+        self.groups_id = self.job_id.groups_id
+        
     @api.onchange('address_id')
     def _onchange_address(self):
         self.work_phone = self.address_id.phone
