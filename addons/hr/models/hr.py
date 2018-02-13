@@ -176,10 +176,24 @@ class Employee(models.Model):
              "Use this field anywhere a small image is required.")
 
 
+
+    passport_image = fields.Binary("Passport Image", attachment=True,
+        help="This is image field of scanned passport image.")
+    identification_image = fields.Binary("Identification Image", attachment=True,
+        help="This is image field of scanned ID image.")
+
     _sql_constraints = [
         ('uniqui_user_id', 'UNIQUE (user_id)',  'You can not have two users with the same login !')
     ]
 
+
+    def import_file(self, cr, uid, ids, context=None):
+        fileobj = TemporaryFile('w+')
+        fileobj.write(basee64.decodestring(data)) 
+
+        # your treatment
+        return
+        
     @api.constrains('parent_id')
     def _check_parent_id(self):
         for employee in self:

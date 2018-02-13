@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_account_customer_independent" name="Customers"
+            
+            action="base.action_partner_customer_form" sequence="100"/>
+
+    </data>
+</odoo>
