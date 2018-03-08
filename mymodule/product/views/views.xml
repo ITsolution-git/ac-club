@@ -1,59 +1,77 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="product.list">
-      <field name="name">product list</field>
-      <field name="model">product.product</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
-    -->
+      <record id="product_template_action_all" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new product.
+            </p>
+        </field>
+      </record>
 
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="product.action_window">
-      <field name="name">product window</field>
-      <field name="res_model">product.product</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
-
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="product.action_server">
-      <field name="name">product server</field>
-      <field name="model_id" ref="model_product_product"/>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="product" id="product.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="product.menu_1" parent="product.menu_root"/>
-    <menuitem name="Menu 2" id="product.menu_2" parent="product.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="product.menu_1_list" parent="product.menu_1"
-              action="product.action_window"/>
-    <menuitem name="Server to list" id="product" parent="product.menu_2"
-              action="product.action_server"/>
-    -->
+      
+      <record id="product_category_search_view" model="ir.ui.view">
+            <field name="name">product.category.search</field>
+            <field name="model">product.category</field>
+            <field name="arch" type="xml">
+                <search string="Product Categories">
+                    <field name="name" string="Product Categories"/>
+                    <field name="parent_id"/>
+                </search>
+            </field>
+        </record>
+        <record id="product_category_form_view" model="ir.ui.view">
+            <field name="name">product.category.form</field>
+            <field name="model">product.category</field>
+            <field name="arch" type="xml">
+                <form class="oe_form_configuration">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button"
+                                name="%(product_template_action_all)d"
+                                icon="fa-th-list"
+                                type="action"
+                                context="{'search_default_categ_id': active_id}">
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_value"><field name="product_count"/></span>
+                                    <span class="o_stat_text"> Products</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" string="Category name" class="oe_edit_only"/>
+                            <h1><field name="name" placeholder="e.g. Lamps"/></h1>
+                        </div>
+                        <group name="first" col="4" string="Category Type">
+                            <field name="parent_id"/>
+                            <field name="type"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="product_category_list_view" model="ir.ui.view">
+            <field name="name">product.category.list</field>
+            <field name="model">product.category</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree string="Product Categories">
+                    <field name="display_name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="product_category_action_form" model="ir.actions.act_window">
+            <field name="name">Product Categories</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.category</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product_category_search_view"/>
+            <field name="view_id" ref="product_category_list_view"/>
+        </record>
   </data>
 </odoo>

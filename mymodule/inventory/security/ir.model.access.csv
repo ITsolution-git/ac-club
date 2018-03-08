@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_product_stock_user,product_product_stock_user,product.model_product_product,inventory.group_stock_user,1,1,1,0
+access_product_template_stock_user,product.template stock user,product.model_product_template,inventory.group_stock_user,1,1,1,0
+access_product_category_stock_manager,product.category stock_manager,product.model_product_category,inventory.group_stock_manager,1,1,1,1
+access_product_template_stock_manager,product.template stock_manager,product.model_product_template,inventory.group_stock_manager,1,1,1,1
+access_product_product_stock_manager,product.product stock_manager,product.model_product_product,inventory.group_stock_manager,1,1,1,1

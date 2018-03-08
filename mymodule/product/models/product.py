@@ -111,7 +111,7 @@ class ProductProduct(models.Model):
     _order = 'name, id'
 
     price = fields.Float(
-        'Price', compute='_compute_product_price',
+        'Price',
         digits=dp.get_precision('Product Price'))
     price_extra = fields.Float(
         'Variant Price Extra', compute='_compute_product_price_extra',
@@ -331,7 +331,7 @@ class ProductProduct(models.Model):
             args.append((('categ_id', 'child_of', self._context['search_default_categ_id'])))
         return super(ProductProduct, self).search(args, offset=offset, limit=limit, order=order, count=count)
 
-    @api.multi
+    '''@api.multi
     def name_get(self):
         # TDE: this could be cleaned a bit I think
 
@@ -385,7 +385,7 @@ class ProductProduct(models.Model):
                           'default_code': product.default_code,
                           }
                 result.append(_name_get(mydict))
-        return result
+        return result'''
 
     @api.model
     def name_search(self, name='', args=None, operator='ilike', limit=100):
@@ -479,9 +479,9 @@ class ProductProduct(models.Model):
 
 
     # compatibility to remove after v10 - DEPRECATED
-    @api.multi
+    '''@api.multi
     def price_get(self, ptype='list_price'):
-        return self.price_compute(ptype)
+        return self.price_compute(ptype)'''
 
     @api.multi
     def _set_standard_price(self, value):
