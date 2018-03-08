@@ -102,6 +102,7 @@
                                 <strong><field name="name"/></strong>
                                 <ul>
                                     <li>Price: <field name="sale_price"></field></li>
+                                    <li>Quantity: <field name="qty_available"></field></li>
                                 </ul>
                                 <div name="tags"/>
                             </div>
