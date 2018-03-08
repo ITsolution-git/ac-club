@@ -49,7 +49,7 @@ class ProductChangeQuantity(models.TransientModel):
         product = self.env['stock.product'].browse(product_id)	
         return product.qty_available
 
-    product_id = fields.Many2one('stock.product', 'Product', required=True)
+    product_id = fields.Many2one('stock.product', 'Product')
 
     new_quantity = fields.Float(
         'New Quantity on Hand', default=1,
@@ -93,7 +93,7 @@ class ProductChangeQuantity(models.TransientModel):
         if values.get('product_id'):
             values.update(self.onchange_product_id_dict(values['product_id']))
 
-        data = {'new_quantity': values['new_quantity'], 'old_quantity': old_quantity}
+        data = {'product_id': product_id, 'new_quantity': values['new_quantity'], 'old_quantity': old_quantity}
         return super(ProductChangeQuantity, self).create(data)
 
     @api.multi
