@@ -46,10 +46,10 @@ class ProductChangeQuantity(models.TransientModel):
 
     def _get_current_count(self):
         product_id = self.env.context.get('active_id')
-        product = self.env['stock.product'].browse(product_id)
+        product = self.env['stock.product'].browse(product_id)	
         return product.qty_available
 
-    product_id = fields.Many2one('stock.product', 'Product', required=True)
+    product_id = fields.Many2one('stock.product', 'Product')
 
     new_quantity = fields.Float(
         'New Quantity on Hand', default=1,
