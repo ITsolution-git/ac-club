@@ -49,7 +49,7 @@ class ProductChangeQuantity(models.TransientModel):
         product = self.env['stock.product'].browse(product_id)	
         return product.qty_available
 
-    product_id = fields.Many2one('stock.product', 'Product')
+    product_id = fields.Many2one('stock.product', 'Product', required=True)
 
     new_quantity = fields.Float(
         'New Quantity on Hand', default=1,
@@ -83,6 +83,8 @@ class ProductChangeQuantity(models.TransientModel):
     def create(self, values):
         # get product object
         product_id = self.env.context.get('active_id')
+        print "pp" * 10
+        print product_id
         product = self.env['stock.product'].browse(product_id)
 
         old_quantity = product.qty_available
