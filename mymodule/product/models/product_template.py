@@ -41,7 +41,8 @@ class ProductTemplate(models.Model):
     
     type = fields.Selection([
         ('consu', _('Consumable')),
-        ('service', _('Service'))], string='Product Type', default='consu', required=True,
+        ('service', _('Service')),
+        ('product', _('Product'))], string='Product Type', default='consu', required=True,
         help='A stockable product is a product for which you manage stock. The "Inventory" app has to be installed.\n'
              'A consumable product, on the other hand, is a product for which stock is not managed.\n'
              'A service is a non-material product you provide.\n'
@@ -60,6 +61,7 @@ class ProductTemplate(models.Model):
     # price fields
     price = fields.Float(
         'Price', digits=dp.get_precision('Product Price'))
+    
     sale_price = fields.Float(
         'Sale Price', default=1.0,
         digits=dp.get_precision('Product Price'),

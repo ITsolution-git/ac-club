@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+import odoo.addons.decimal_precision as dp
 
 class HotelRoomType(models.Model):
 
@@ -44,6 +45,7 @@ class HotelRoom(models.Model):
                                ('occupied', 'Occupied')],
                               'Status', default='available')
     capacity = fields.Integer('Capacity', required=True)
+    num_of_room = fields.Integer('Number Of Rooms')
 
     ''' room_line_ids = fields.One2many('folio.room.line', 'room_id',
                                     string='Room Reservation Line')
@@ -58,6 +60,10 @@ class HotelRoom(models.Model):
 
     price = fields.Float('Price per Day')
     area = fields.Float('Room Area')
+
+    description = fields.Text(
+        'Description', translate=True,
+        help="")
 
     @api.constrains('capacity')
     def check_capacity(self):
@@ -246,3 +252,17 @@ class HotelServices(models.Model):
                                  delegate=True)
     categ_id = fields.Many2one('hotel.service.type', string='Service Category',
                                required=True)
+
+
+class Card(models.Model):
+
+    _name = 'hotel.card'
+    _description = 'Hotel Room Cards and Member Cards'
+
+    card_id = fields.Char('Card ID', required=True)
+    balance = fields.Float('Cost', default=0, digits=dp.get_precision('Product Price'))
+    type = fields.Selection([
+        ('room', 'Room Card'),
+        ('member', 'Member Card')], 'Category Type', default='room',
+        help="")
+    active = fields.Boolean(default=True) 

@@ -101,12 +101,18 @@
                                     <field name="capacity" />
                                     <field name="price" />
                                     <field name="area" />
+                                    <field name="num_of_room" />
                                     <!--<field name="uom_id" invisible="1" />-->
                                 </group>
                             </page>
                             <page string="Room Amenities">
                                 <separator string=" Room Amenities" />
                                 <field name="room_amenities" colspan="4" nolabel="1" />
+                            </page>
+                            <page string="Description">
+                                <separator string=" Description" />
+                                
+                                <field name="description" colspan="4" nolabel="1" />
                             </page>
                         </notebook>
                     </sheet>
@@ -135,7 +141,7 @@
             <field name="view_type">form</field>
             <field name="context">{}</field>
             <field name="view_id" ref="view_hotel_room_tree" />
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
         </record>
 
         <menuitem id="menu_open_hotel_room_form" name="Rooms"
@@ -214,12 +220,17 @@
             <field name="arch" type="xml">
                 <form string="Hotel Room Amenities">
                     <sheet>
-                        <label for="name" string="Name" />
-                        <h1>
-                            <field name="name" />
-                        </h1>
-                        <label for="active" string="Active" />
-                        <field name="active" />
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" string="Name" />
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                        </div>
                         <notebook>
                             <page string="Information">
                                 <group colspan="4" col="4">
@@ -358,7 +369,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="menu_hotel_service" name="Services"
+        <menuitem id="menu_hotel_service" name="Service"
             parent="hotel.hotel_configuration_menu" sequence="2" />
         <menuitem name="Service Types" id="menu_open_hotel_service_type_form_tree"
             action="open_hotel_service_type_form_tree" sequence="9"
@@ -440,6 +451,80 @@
         <menuitem name="Services" id="menu_open_hotel_services_form"
             action="action_hotel_services_form" sequence="8"
             parent="hotel.menu_hotel_service" />
+
+
+        <!--===== Room Amenities ===== -->
+        <!-- Form view of hotel cards -->
+        <record id="view_hotel_card_form" model="ir.ui.view">
+            <field name="name">hotel.card.form</field>
+            <field name="model">hotel.card</field>
+            <field name="arch" type="xml">
+                <form string="Hotel Cards">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="card_id" string="card_id" />
+                            <h1>
+                                <field name="card_id" />
+                            </h1>
+                        </div>
+                        <notebook>
+                            <page string="Information">
+                                <group colspan="4" col="4">
+                                    <field name="type" string="Card Type" />
+                                    <field name="balance" string="Balance" />
+                                </group>
+                            </page>
+                            
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search view of hotel cards -->
+        <record id="view_hotel_cards_search" model="ir.ui.view">
+            <field name="name">hotel.card_search</field>
+            <field name="model">hotel.card</field>
+            <field name="arch" type="xml">
+                <search string="Hotel Cards">
+                    <field name="card_id" />
+                    <field name="type" string="Card Type" />
+                </search>
+            </field>
+        </record>
+
+        <!-- Tree view of hotel cards -->
+        <record id="view_hotel_card_list" model="ir.ui.view">
+            <field name="name">hotel.card_list</field>
+            <field name="model">hotel.card</field>
+            <field name="arch" type="xml">
+                <tree string="Hotel Cards">
+                    <field name="card_id" />
+                    <field name="type" string="Card Type" />
+                    <field name="balance" string="Balance" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action for hotel cards -->
+        <record id="action_hotel_card_view_form" model="ir.actions.act_window">
+            <field name="name">Cards</field>
+            <field name="res_model">hotel.card</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{}
+            </field>
+            <field name="view_id" ref="view_hotel_card_list" />
+        </record>
+        
+        <menuitem id="menu_hotel_card" name="Card"
+            parent="hotel.hotel_configuration_menu" action="action_hotel_card_view_form" sequence="8" />
+
 
     </data>
 </odoo>

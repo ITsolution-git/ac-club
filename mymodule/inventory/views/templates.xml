@@ -1,0 +1,233 @@
+<odoo>
+  <data>
+    <menuitem name="Inventory" id="menu_stock_root"
+        groups="group_stock_manager,group_stock_user"
+        web_icon="stock,static/description/icon.png"/>
+
+    <record id="product_template_action_product" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="context">{"search_default_consumable": 1, 'type': 'product', 'default_type': 'product'}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new product.
+            </p>
+        </field>
+    </record>
+    <record id="product_template_search_view" model="ir.ui.view">
+        <field name="name">product.template.search</field>
+        <field name="model">stock.product</field>
+        <field name="arch" type="xml">
+            <search string="Product">
+                <field name="name" string="Product" filter_domain="['|',('name','ilike',self),('barcode','ilike',self)]"/>
+                <field name="categ_id" filter_domain="[('categ_id', 'child_of', raw_value)]"/>
+                <separator/>
+                <filter string="Services" name="services" domain="[('type','=','service')]"/>
+                <filter string="Products" name="consumable" domain="[('type', '=', ['product'])]" help="Products your store in the inventory"/>
+                <separator/>
+                <filter string="Can be Sold" name="filter_to_sell" domain="[('sale_ok','=',1)]"/>
+                <filter string="Can be Purchased" name="filter_to_purchase" domain="[('purchase_ok', '=', 1)]"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="product_template_action_all" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">stock.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_type">form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new product.
+            </p>
+        </field>
+    </record>
+
+    <!--<record id="product_search_form_view" model="ir.ui.view">
+            <field name="name">product.product.search</field>
+            <field name="model">product.product</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <search string="Product">
+                    <field name="name" />
+                    <field name="categ_id" string="Product Category" />
+                </search>
+            </field>
+        </record>-->
+
+    <record id="product_normal_action" model="ir.actions.act_window">
+            <field name="name">Product Variants</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.product</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="product_template_search_view"/>
+            <field name="view_id" eval="False"/> <!-- Force empty -->
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to define a new product.
+              </p><p>
+                You must define a product for everything you sell, whether it's
+                a physical product, a consumable or a service you offer to
+                customers.
+              </p><p>
+                The product form contains information to simplify the sale
+                process: price, notes in the quotation, accounting data,
+                procurement methods, etc.
+              </p>
+            </field>
+        </record>
+
+    <record id="product_kanban_view" model="ir.ui.view">
+        <field name="name">Product Kanban</field>
+        <field name="model">stock.product</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="image_medium"/>
+                <field name="sale_price"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('product.product', 'image_medium', record.id.value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong><field name="name"/></strong>
+                                <ul>
+                                    <li>Price: <field name="sale_price"></field></li>
+                                </ul>
+                                <div name="tags"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="view_change_product_quantity" model="ir.ui.view">
+        <field name="name">Change Product Quantity</field>
+        <field name="model">stock.change.product.qty</field>
+        <field name="arch" type="xml">
+            <form string="Update Product Quantity">
+                <group>
+                    <field name="old_quantity" readonly="1" />
+                    <field name="new_quantity" />
+                </group>
+                <footer>
+                    <button name="change_product_qty" string="_Apply" type="object" class="btn-primary"/>
+                    <button string="_Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_change_product_quantity" model="ir.actions.act_window">
+            <field name="name">Update Product Quantity</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.change.product.qty</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_change_product_quantity"/>
+            <field name="target">new</field>
+        </record>
+
+    <!-- base structure of product.template, common with product.product -->
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form</field>
+        <field name="model">stock.product</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="Product">
+                <header position="inside">
+                        <button string="Update Qty On Hand"
+                            type="action"
+                            name="%(action_view_change_product_quantity)d"/>
+                </header>
+                
+                <sheet>
+                    <field name="id" invisible="True"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <field name="image_medium" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Product Name"/>
+                        <h1><field name="name" placeholder="Product Name"/></h1>
+                        <!--<div name="options" groups="base.group_user">
+                            <div>
+                                <field name="sale_ok"/>
+                                <label for="sale_ok"/>
+                            </div>
+                            <div>
+                                <field name="purchase_ok"/>
+                                <label for="purchase_ok"/>
+                            </div>
+                        </div>-->
+                    </div>
+                    <notebook>
+                        <page string="General Information" name="general_information">
+                            <group>
+                                <group name="group_general">
+                                    <field name="categ_id" string="Product Category"/>
+                                    <field name="barcode" string="Barcode"/>
+                                </group>
+                                <group name="group_standard_price">
+                                    <field name="price" string="Cost" attrs="{'readonly': [('id', '!=', False)]}"/>
+                                    <field name="sale_price" string="Sale Price"/>
+                                    <field name="qty_available" string="Quantity on Hand"/>
+                                    <!--<field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                    <label for="standard_price" groups="base.group_user"/>
+                                    <div name="standard_price_uom" groups="base.group_user">
+                                        <field name="standard_price" widget='monetary' options="{'currency_field': 'currency_id'}" class="oe_inline"/>
+                                    </div>
+                                    <field name="company_id" groups="base.group_multi_company"
+                                        options="{'no_create': True}"/>
+                                    <field name="uom_id" groups="product.group_uom" options="{'no_create': True}"/>
+                                    <field name="uom_po_id" groups="product.group_uom" options="{'no_create': True}"/>
+                                    <field name="currency_id" invisible="1"/> -->
+                                </group>
+                            </group>
+                        </page>
+                        
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <menuitem id="menu_product_variant_config_stock" name="Products" action="product_template_action_product"
+        parent="menu_stock_root" sequence="1"/>
+
+
+    <record id="product_category_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.category.form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view" />
+            <field name="arch" type="xml">
+                <group name="first" position="after">
+                    <group string="Logistics">
+                        
+                    </group>
+                </group>
+            </field>
+        </record>
+    
+    <menuitem
+        action="product.product_category_action_form" name="Category" id="menu_product_category_config_stock"
+        parent="menu_stock_root" sequence="2"/>
+
+  </data>
+</odoo>
