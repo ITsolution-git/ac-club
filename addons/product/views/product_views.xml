@@ -188,7 +188,7 @@
                         <group>
                             <group name="codes" string="Codes">
                                 <field name="barcode"/>
-                                <field name="default_code"/>
+                                <field name="default_code" invisible="1"/>
                             </group>
                             <group>
                                 <field name="active"/>
@@ -255,7 +255,7 @@
             <field name="arch" type="xml">
 
                 <tree string="Product Variants">
-                    <field name="default_code"/>
+                    <field name="default_code" invisible="1"/>
                     <field name="name"/>
                     <field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant"/>
                     <field name="lst_price"/>
@@ -279,7 +279,7 @@
                     <attribute name="string">Product Variant</attribute>
                 </form>
                 <field name="type" position="after">
-                    <field name="default_code"/>
+                    <field name="default_code" invisible="1"/>
                     <field name="barcode"/>
                 </field>
                 <field name="list_price" position="attributes">
