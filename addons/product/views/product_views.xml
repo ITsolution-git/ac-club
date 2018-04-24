@@ -28,7 +28,7 @@
                     <div class="oe_title">
                         <label class="oe_edit_only" for="name" string="Product Name"/>
                         <h1><field name="name" placeholder="Product Name"/></h1>
-                        <div name="options" groups="base.group_user">
+                        <div name="options" groups="base.group_user" invisible="1">
                             <div>
                                 <field name="sale_ok"/>
                                 <label for="sale_ok"/>
@@ -44,7 +44,7 @@
                             <group>
                                 <group name="group_general">
                                     <field name="type"/>
-                                    <field name="categ_id" string="Internal Category"/>
+                                    <!-- <field name="categ_id" string="Internal Category"/> -->
                                 </group>
                                 <group name="group_standard_price">
                                     <field name="list_price" widget='monetary' options="{'currency_field': 'currency_id'}"/>
@@ -60,7 +60,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Sales" attrs="{'invisible':[('sale_ok','=',False)]}" name="sales">
+                        <page string="Sales" invisible="1" name="sales">
                             <div name="pricelist_item" groups="product.group_product_pricelist">
                                 <separator string="Pricing"/>
                                 <field name="item_ids" nolabel="1" context="{'default_base':'list_price', 'default_applied_on' :'1_product'}">
@@ -79,7 +79,7 @@
                                     attrs="{'invisible':[('type', '!=', 'service')]}"/>
                             </group>
                         </page>
-                        <page string="Notes" name="notes">
+                        <page string="Notes" name="notes" invisible="1" >
                             <group name="description">
                                 <separator string="Description for Quotations" colspan="4"/>
                                 <field name="description_sale" colspan="4" nolabel="1"
@@ -188,7 +188,7 @@
                         <group>
                             <group name="codes" string="Codes">
                                 <field name="barcode"/>
-                                <field name="default_code"/>
+                                <field name="default_code" invisible="1"/>
                             </group>
                             <group>
                                 <field name="active"/>
@@ -255,7 +255,7 @@
             <field name="arch" type="xml">
 
                 <tree string="Product Variants">
-                    <field name="default_code"/>
+                    <field name="default_code" invisible="1"/>
                     <field name="name"/>
                     <field name="attribute_value_ids" widget="many2many_tags" groups="product.group_product_variant"/>
                     <field name="lst_price"/>
@@ -279,7 +279,7 @@
                     <attribute name="string">Product Variant</attribute>
                 </form>
                 <field name="type" position="after">
-                    <field name="default_code"/>
+                    <field name="default_code" invisible="1"/>
                     <field name="barcode"/>
                 </field>
                 <field name="list_price" position="attributes">

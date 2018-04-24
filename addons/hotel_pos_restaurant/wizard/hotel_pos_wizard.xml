@@ -33,7 +33,7 @@
         <field name="target">new</field>
     </record>
 
-    <menuitem id="wizard_order_menu" name="Pos Order Report" action="hotel_order_wizard"
-         parent="hotel.hotel_report_menu" sequence="32" />
+    <!-- <menuitem id="wizard_order_menu" name="Pos Order Report" action="hotel_order_wizard"
+         parent="hotel.hotel_report_menu" sequence="32" /> -->
 
 </odoo>
