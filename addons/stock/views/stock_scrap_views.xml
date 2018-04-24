@@ -132,11 +132,11 @@
             </field>
         </record>
 
-    <menuitem
+    <!-- <menuitem
         id="menu_stock_scrap"
         name="Scrap"
         parent="menu_stock_inventory_control"
         action="action_stock_scrap"
-        sequence="99"/>
+        sequence="99"/> -->
 
 </odoo>

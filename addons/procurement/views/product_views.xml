@@ -11,7 +11,7 @@
                    <button class="oe_stat_button" name="%(procurement.procurement_order_action_product_template_stat)d"
                            icon="fa-truck" string="Procurements" type="action" 
                            groups="base.group_no_one"
-                           attrs="{'invisible':[('type', '=', 'service')]}"/>
+                           invisible="1"/>
                 </xpath>
             </field>
         </record>

@@ -30,5 +30,5 @@
         <field name="view_id" ref="view_wizard_valuation_history"/>
         <field name="target">new</field>
     </record>
-    <menuitem id="menu_action_wizard_valuation_history" action="action_wizard_stock_valuation_history" parent="stock.menu_warehouse_report" sequence="1" groups="base.group_no_one"/>
+    <!-- <menuitem id="menu_action_wizard_valuation_history" action="action_wizard_stock_valuation_history" parent="stock.menu_warehouse_report" sequence="1" groups="base.group_no_one"/> -->
 </odoo>

@@ -31,8 +31,8 @@
         <field name="target">new</field>
     </record>
 
-    <menuitem name="Activity Report" id="wizard_activity_menu"
+    <!-- <menuitem name="Activity Report" id="wizard_activity_menu"
         action="action_hotel_housekeeping_wizard" parent="hotel.hotel_report_menu"
-        sequence="29" />
+        sequence="29" /> -->
 
 </odoo>

@@ -123,11 +123,11 @@
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_hotel_housekeeping_tree" />
     </record>
-    <menuitem id="menu_housekeeping" name="Housekeeping Services"
+    <!-- <menuitem id="menu_housekeeping" name="Housekeeping Services"
         parent="hotel.hotel_management_menu" sequence="2" />
     <menuitem name="Housekeeping Services" id="menu_open_hotel_housekeeping_form_tree"
         action="open_hotel_housekeeping_form_tree" parent="menu_housekeeping"
-        sequence="4" />
+        sequence="4" /> -->
 
     <!-- ================ Activity Category================= -->
     <!-- Form view of hotel housekeeping activity type -->
@@ -165,11 +165,11 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <menuitem id="menu_hotel_activity" name="Activity"
+    <!-- <menuitem id="menu_hotel_activity" name="Activity"
         parent="hotel.hotel_configuration_menu" sequence="2" />
     <menuitem id="menu_action_hotel_housekeeping_activity_type_view_form"
         name="Activity Types" action="action_hotel_housekeeping_activity_type_view_form"
-        parent="menu_hotel_activity" sequence="12" />
+        parent="menu_hotel_activity" sequence="12" /> -->
 
     <!-- activity -->
     <!-- Form view of hotel activity -->
@@ -226,7 +226,7 @@
         <field name="context">{'default_isactivitytype':1}</field>
     </record>
 
-    <menuitem id="menu_open_h_activity_form" name="Activities"
-        action="action_h_activity_form" parent="menu_hotel_activity" />
+    <!-- <menuitem id="menu_open_h_activity_form" name="Activities"
+        action="action_h_activity_form" parent="menu_hotel_activity" /> -->
 
 </odoo>

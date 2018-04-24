@@ -165,13 +165,13 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form,gantt</field>
     </record>
-    <menuitem id="menu_hotel_reservation" name="Reservations"
+    <!-- <menuitem id="menu_hotel_reservation" name="Reservations"
         parent="hotel.hotel_management_menu" sequence="1" />
     <menuitem name="Reservations" id="menu_action_hotel_reservation_tree_all"
         action="action_hotel_reservation_tree_all" parent="menu_hotel_reservation"
-        sequence="3" />
+        sequence="3" /> -->
 
-    <record id="view_hotel_room_form_inherited" model="ir.ui.view">
+    <!-- <record id="view_hotel_room_form_inherited" model="ir.ui.view">
         <field name="name">view.hotel.room.form.inherited</field>
         <field name="model">hotel.room</field>
         <field name="inherit_id" ref="hotel.view_hotel_room_form" />
@@ -203,7 +203,7 @@
                 </page>
             </xpath>
         </field>
-    </record>
+    </record> -->
 
     <record id="view_hotel_folio1_form_inherited" model="ir.ui.view">
         <field name="name">hotel.folio.form.inherited</field>
@@ -298,8 +298,8 @@
         <field name="view_mode">form</field>
     </record>
 
-    <menuitem id="menu_action_hotel_reservation_summary" name="Reservation Summary"
+    <!-- <menuitem id="menu_action_hotel_reservation_summary" name="Reservation Summary"
         action="action_hotel_reservation_summary" parent="menu_hotel_reservation"
-        sequence="3" />
+        sequence="3" /> -->
 
 </odoo>
