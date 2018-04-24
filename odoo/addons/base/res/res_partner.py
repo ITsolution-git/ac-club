@@ -127,6 +127,15 @@ class PartnerTitle(models.Model):
 
     _sql_constraints = [('name_uniq', 'unique (name)', "Title name already exists !")]
 
+class PartnerCustomerType(models.Model):
+    _name = 'res.partner.type'
+    _order = 'name'
+
+    name = fields.Char(string='Type', required=True, translate=True)
+    shortcut = fields.Char(string='Abbreviation', translate=True)
+
+    _sql_constraints = [('name_uniq', 'unique (name)', "Type name already exists !")]
+
 class Partner(models.Model, FormatAddress):
     _description = 'Partner'
     _name = "res.partner"
@@ -142,6 +151,8 @@ class Partner(models.Model, FormatAddress):
     display_name = fields.Char(compute='_compute_display_name', store=True, index=True)
     date = fields.Date(index=True)
     title = fields.Many2one('res.partner.title')
+    customer_type = fields.Many2one('res.partner.type')
+    rating = fields.Float('Rating')
     parent_id = fields.Many2one('res.partner', string='Related Company', index=True)
     parent_name = fields.Char(related='parent_id.name', readonly=True, string='Parent name')
     child_ids = fields.One2many('res.partner', 'parent_id', string='Contacts', domain=[('active', '=', True)])  # force "active_test" domain to bypass _search() override
@@ -229,6 +240,12 @@ class Partner(models.Model, FormatAddress):
         help="Small-sized image of this contact. It is automatically "\
              "resized as a 64x64px image, with aspect ratio preserved. "\
              "Use this field anywhere a small image is required.")
+
+    passport_image_front = fields.Binary("Passport Image Front", attachment=True,
+        help="Passport Image")
+    passport_image_back = fields.Binary("Passport Image Back", attachment=True,
+        help="Passport Image")
+
     # hack to allow using plain browse record in qweb views, and used in ir.qweb.field.contact
     self = fields.Many2one(comodel_name=_name, compute='_compute_get_ids')
 

@@ -7,6 +7,6 @@
     'installable': True,
     'auto_install': True,
     'data': [
-        'views/customers.xml',
+        'views/customers.xml'
     ]
 }

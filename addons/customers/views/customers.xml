@@ -2,9 +2,56 @@
 <odoo>
     <data>
 
+        <!-- Top menu item -->
+        <menuitem
+            id="menu_customer_root"
+            name="Customers"
+            groups="base.group_user"
+            sequence="75"/>
+
         <menuitem id="menu_account_customer_independent" name="Customers"
             
+            parent="menu_customer_root"
             action="base.action_partner_customer_form" sequence="100"/>
+
+        <!-- Customer Team -->
+       	<record id="view_customer_team_form" model="ir.ui.view">
+            <field name="name">customer.team.form</field>
+            <field name="model">customer.team</field>
+            <field name="arch" type="xml">
+                <form string="Customer Team">
+                    <group>
+                        <field name="name"/>
+                        <field name="customer_ids"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_customer_team_list" model="ir.ui.view">
+            <field name="name">customer.team.list</field>
+            <field name="model">customer.team</field>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Customer Team">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="open_view_customer_team_form" model="ir.actions.act_window">
+            <field name="name">Customer Team</field>
+            <field name="res_model">customer.team</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="menu_view_customer_team_form"
+            action="open_view_customer_team_form"
+            parent="menu_customer_root"
+            
+            sequence="1"/>
 
     </data>
 </odoo>
