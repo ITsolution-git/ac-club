@@ -49,8 +49,7 @@ class ProductTemplate(models.Model):
     rental = fields.Boolean('Can be Rent')
     categ_id = fields.Many2one(
         'product.category', 'Internal Category',
-        change_default=True, default=_get_default_category_id, domain="[('type','=','normal')]",
-        required=True, help="Select category for the current product")
+        change_default=True, default="", domain="[('type','=','normal')]", help="Select category for the current product")
 
     currency_id = fields.Many2one(
         'res.currency', 'Currency', compute='_compute_currency_id')
@@ -250,8 +249,8 @@ class ProductTemplate(models.Model):
 
     @api.constrains('uom_id', 'uom_po_id')
     def _check_uom(self):
-        if any(template.uom_id and template.uom_po_id and template.uom_id.category_id != template.uom_po_id.category_id for template in self):
-            raise ValidationError(_('Error: The default Unit of Measure and the purchase Unit of Measure must be in the same category.'))
+        #if any(template.uom_id and template.uom_po_id and template.uom_id.category_id != template.uom_po_id.category_id for template in self):
+        #    raise ValidationError(_('Error: The default Unit of Measure and the purchase Unit of Measure must be in the same category.'))
         return True
 
     @api.onchange('uom_id')
