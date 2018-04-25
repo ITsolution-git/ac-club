@@ -115,7 +115,7 @@ class IrUiMenu(models.Model):
             'ir.actions.server': 'model_id',
         }
         
-        namelist = ['Dashboard', 'Discuss', 'Sales', 'Point of Sale', 'Invoicing', 'Invoices'] 
+        namelist = ['Dashboard', 'Dashboards', 'Discuss', 'Sales', 'Point of Sale', 'Invoicing', 'Invoices'] 
         for menu in action_menus:
             fname = model_fname.get(menu.action._name)
 
