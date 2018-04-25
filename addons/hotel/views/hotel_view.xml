@@ -175,7 +175,9 @@
                     <notebook>
                         <page string="Information">
                             <group colspan="4" col="4">
-                                <field name="type" select="2" string="Amenity Type" />
+                                <!--<field name="type" select="2" string="Amenity Type" />-->
+
+                                <field name="categ_id" string="Amenity Type" select="1" />
                                 <!-- <field name="categ_id" string="Amenities Category" />
                                 <<field name="product_manager" select="2" string="Amenity manager" />
                                 <field name="uom_id" />
@@ -310,8 +312,8 @@
         <field name="view_id" ref="hotel_amenities_category_tree_view" />
     </record>
 
-    <menuitem name="Amenities by Category" id="menu_hotel_ty_category_action"
-        action="hotel_amenities_category_action" sequence="4" parent="hotel.menu_amenity" />
+    <!-- <menuitem name="Amenities by Category" id="menu_hotel_ty_category_action"
+        action="hotel_amenities_category_action" sequence="4" parent="hotel.menu_amenity" /> -->
 
     <!-- ====== Rooms ====== -->
     <!-- Form view of hotel room -->
@@ -578,8 +580,8 @@
         <field name="view_id" ref="hotel_room_category_tree_view" />
     </record>
 
-    <menuitem name="Room by Category" id="menu_hotel_room_category_action"
-        action="hotel_room_category_action" sequence="7" parent="hotel.menu_hotel_room" />
+    <!-- <menuitem name="Room by Category" id="menu_hotel_room_category_action"
+        action="hotel_room_category_action" sequence="7" parent="hotel.menu_hotel_room" /> -->
 
     <!--=== Hotel Folio ==== -->
     <!-- Form view of hotel folio -->
@@ -1057,9 +1059,9 @@
         <field name="view_id" ref="hotel_service_category_tree_view" />
     </record>
 
-    <menuitem name="Services by Category" id="menu_hotel_services_categ_action"
+    <!-- <menuitem name="Services by Category" id="menu_hotel_services_categ_action"
         action="hotel_service_categ_action" sequence="10"
-        parent="hotel.menu_hotel_service" />
+        parent="hotel.menu_hotel_service" /> -->
 
     <!--======== Currency ======== -->
     <!-- Form view of currency exchange -->
