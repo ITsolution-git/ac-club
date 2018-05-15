@@ -2,8 +2,8 @@
 <!DOCTYPE xml>
 <odoo>
 
-    <!-- <menuitem id="hotel_restaurant_menu" name="Restaurant"
-        parent="hotel.hotel_management_menu" sequence="3" /> -->
+    <menuitem id="hotel_restaurant_menu" name="Restaurant"
+        parent="hotel.hotel_management_menu" sequence="3" />
 
     <record id="view_hotelfolio1_form1_inherited" model="ir.ui.view">
         <field name="name">hotel.folio1.form1.inherited</field>
@@ -107,7 +107,7 @@
 
     <!-- ======= Table Reservation ======= -->
     <!-- Form view of hotel restaurant reservation -->
-    <!-- <record id="view_hotel_restaurant_reservation_form" model="ir.ui.view">
+    <record id="view_hotel_restaurant_reservation_form" model="ir.ui.view">
         <field name="name">hotel_restaurant_reservation.form</field>
         <field name="model">hotel.restaurant.reservation</field>
         <field name="arch" type="xml">
@@ -154,10 +154,10 @@
                 </sheet>
             </form>
         </field>
-    </record> -->
+    </record>
 
     <!-- Tree view of hotel restaurant reservation -->
-    <!-- <record id="view_hotel_restaurant_reservation_tree" model="ir.ui.view">
+    <record id="view_hotel_restaurant_reservation_tree" model="ir.ui.view">
         <field name="name">hotel_restaurant_reservation.tree</field>
         <field name="model">hotel.restaurant.reservation</field>
         <field name="arch" type="xml">
@@ -175,10 +175,10 @@
                 <field name="state" />
             </tree>
         </field>
-    </record> -->
+    </record>
 
     <!-- Search view of hotel restaurant reservation -->
-    <!--<record id="view_hotel_restaurant_reservation_search" model="ir.ui.view">
+    <record id="view_hotel_restaurant_reservation_search" model="ir.ui.view">
         <field name="name">hotel.restaurant.reservation.search</field>
         <field name="model">hotel.restaurant.reservation</field>
         <field name="arch" type="xml">
@@ -211,10 +211,10 @@
                 </group>
             </search>
         </field>
-    </record> -->
+    </record>
 
     <!-- Action of hotel restaurant reservation -->
-    <!--<record id="open_view_hotel_restaurant_reservation_form_tree"
+    <record id="open_view_hotel_restaurant_reservation_form_tree"
         model="ir.actions.act_window">
         <field name="name">Table Booking</field>
         <field name="res_model">hotel.restaurant.reservation</field>
@@ -225,11 +225,11 @@
 
     <menuitem name="Table Booking"
         id="menu_open_view_hotel_restaurant_reservation_form_tree" action="open_view_hotel_restaurant_reservation_form_tree"
-        parent="hotel_restaurant_menu" />-->
+        parent="hotel_restaurant_menu" />
 
     <!-- ======= Orders for Reservation ======= -->
     <!-- Form view of hotel reservation order -->
-    <!--<record id="view_hotel_reservation_order_form" model="ir.ui.view">
+    <record id="view_hotel_reservation_order_form" model="ir.ui.view">
         <field name="name">hotel_reservation_order.form</field>
         <field name="model">hotel.reservation.order</field>
         <field name="arch" type="xml">
@@ -298,10 +298,10 @@
                 </sheet>
             </form>
         </field>
-    </record>-->
+    </record>
 
     <!-- Tree view of hotel reservation order -->
-    <!--<record id="view_hotel_reservation_order_tree" model="ir.ui.view">
+    <record id="view_hotel_reservation_order_tree" model="ir.ui.view">
         <field name="name">hotel_reservation_order.tree</field>
         <field name="model">hotel.reservation.order</field>
         <field name="arch" type="xml">
@@ -317,10 +317,10 @@
                 <field name="amount_total" sum="Order Total" />
             </tree>
         </field>
-    </record>-->
+    </record>
 
     <!-- Search view of hotel reservation order -->
-    <!--<record id="view_hotel_reservation_order_search" model="ir.ui.view">
+    <record id="view_hotel_reservation_order_search" model="ir.ui.view">
         <field name="name">hotel.reservation.order.search</field>
         <field name="model">hotel.reservation.order</field>
         <field name="arch" type="xml">
@@ -337,10 +337,10 @@
                 </group>
             </search>
         </field>
-    </record>-->
+    </record>
 
     <!-- Action of hotel reservation order -->
-    <!--<record id="open_view_hotel_reservation_order_form_tree" model="ir.actions.act_window">
+    <record id="open_view_hotel_reservation_order_form_tree" model="ir.actions.act_window">
         <field name="name">Order</field>
         <field name="res_model">hotel.reservation.order</field>
         <field name="view_type">form</field>
@@ -349,11 +349,11 @@
 
     <menuitem id="menu_open_view_hotel_reservation_order_form_tree"
         name="Orders" action="open_view_hotel_reservation_order_form_tree"
-        parent="hotel_restaurant_menu" />-->
+        parent="hotel_restaurant_menu" />
 
     <!-- ======= Table Order ======= -->
     <!-- Form view of hotel restaurant order -->
-    <!--<record id="view_hotel_restaurant_order_form" model="ir.ui.view">
+    <record id="view_hotel_restaurant_order_form" model="ir.ui.view">
         <field name="name">hotel_restaurant_order.form</field>
         <field name="model">hotel.restaurant.order</field>
         <field name="arch" type="xml">
@@ -432,10 +432,10 @@
                 </sheet>
             </form>
         </field>
-    </record>-->
+    </record>
 
     <!-- Tree view of hotel restaurant order -->
-    <!--<record id="view_hotel_restaurant_order_tree" model="ir.ui.view">
+    <record id="view_hotel_restaurant_order_tree" model="ir.ui.view">
         <field name="name">hotel_restaurant_order.tree</field>
         <field name="model">hotel.restaurant.order</field>
         <field name="arch" type="xml">
@@ -451,10 +451,10 @@
                 <field name="amount_total" sum="Table Order Total" />
             </tree>
         </field>
-    </record>-->
+    </record>
 
     <!-- Search view of hotel restaurant order -->
-    <!--<record id="view_hotel_restaurant_order_search" model="ir.ui.view">
+    <record id="view_hotel_restaurant_order_search" model="ir.ui.view">
         <field name="name">hotel.restaurant.order.search</field>
         <field name="model">hotel.restaurant.order</field>
         <field name="arch" type="xml">
@@ -471,10 +471,10 @@
                 </group>
             </search>
         </field>
-    </record>-->
+    </record>
 
     <!-- Action of hotel restaurant order -->
-    <!--<record id="open_view_hotel_restaurant_order_form_tree" model="ir.actions.act_window">
+    <record id="open_view_hotel_restaurant_order_form_tree" model="ir.actions.act_window">
         <field name="name">Table Order</field>
         <field name="res_model">hotel.restaurant.order</field>
         <field name="view_type">form</field>
@@ -483,12 +483,12 @@
 
     <menuitem id="menu_open_view_hotel_restaurant_order_form_tree"
         name="Table Order" action="open_view_hotel_restaurant_order_form_tree"
-        sequence="11" parent="hotel_restaurant_menu" />-->
+        sequence="11" parent="hotel_restaurant_menu" />
 
 
     <!-- ======= Kitchen Order List ======= -->
     <!-- Form view of hotel restaurant kitchen order tickets -->
-    <!--<record id="view_hotel_restaurant_kitchen_order_tickets_form"
+    <record id="view_hotel_restaurant_kitchen_order_tickets_form"
         model="ir.ui.view">
         <field name="name">hotel_restaurant_kitchen_order_tickets.form</field>
         <field name="model">hotel.restaurant.kitchen.order.tickets</field>
@@ -529,10 +529,10 @@
                 </sheet>
             </form>
         </field>
-    </record> -->
+    </record>
 
     <!-- Tree view of hotel restaurant kitchen order tickets -->
-    <!--<record id="view_hotel_restaurant_kitchen_order_tickets_tree"
+    <record id="view_hotel_restaurant_kitchen_order_tickets_tree"
         model="ir.ui.view">
         <field name="name">hotel_restaurant_kitchen_order_tickets.tree</field>
         <field name="model">hotel.restaurant.kitchen.order.tickets</field>
@@ -547,10 +547,10 @@
                 <field name="kot_list" />
             </tree>
         </field>
-    </record>-->
+    </record>
 
     <!-- Search view of hotel restaurant kitchen order tickets -->
-    <!--<record id="view_hotel_restaurant_kitchen_order_search" model="ir.ui.view">
+    <record id="view_hotel_restaurant_kitchen_order_search" model="ir.ui.view">
         <field name="name">hotel.restaurant.kitchen.order.tickets.search
         </field>
         <field name="model">hotel.restaurant.kitchen.order.tickets</field>
@@ -568,10 +568,10 @@
                 </group>
             </search>
         </field>
-    </record>-->
+    </record>
 
     <!-- Action of hotel restaurant kitchen order tickets -->
-    <!--<record id="open_view_hotel_restaurant_kitchen_order_tickets_form_tree"
+    <record id="open_view_hotel_restaurant_kitchen_order_tickets_form_tree"
         model="ir.actions.act_window">
         <field name="name">Kitchen Order Tickets</field>
         <field name="res_model">hotel.restaurant.kitchen.order.tickets</field>
@@ -582,7 +582,7 @@
     <menuitem name="Kitchen Order Ticket"
         id="menu_open_view_hotel_restaurant_kitchen_order_tickets_form_tree"
         action="open_view_hotel_restaurant_kitchen_order_tickets_form_tree"
-        sequence="12" parent="hotel_restaurant_menu" />-->
+        sequence="12" parent="hotel_restaurant_menu" />
 
     <!-- ======= Menucard Category ======= -->
     <!-- Form view of hotel menucard type -->
@@ -621,11 +621,11 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- <menuitem id="menu_hotel_food_item" name="Food Item"
-        parent="hotel.hotel_configuration_menu" sequence="2" /> -->
-    <!-- <menuitem id="menu_action_hotel_menucard_type_view_form" name="Food Item Types"
+    <menuitem id="menu_hotel_food_item" name="Food Item"
+        parent="hotel.hotel_configuration_menu" sequence="2" />
+    <menuitem id="menu_action_hotel_menucard_type_view_form" name="Food Item Types"
         action="action_hotel_menucard_type_view_form" parent="menu_hotel_food_item"
-        sequence="12" /> -->
+        sequence="12" />
 
     <!-- Form view of hotel menucard -->
     <record model="ir.ui.view" id="view_hotel_menucard_form">
@@ -787,8 +787,8 @@
         </field>
     </record>
 
-    <!-- <menuitem name="Food Items" id="menu_open_hotel_menucard_form"
-        action="action_hotel_menucard_form" parent="menu_hotel_food_item" /> -->
+    <menuitem name="Food Items" id="menu_open_hotel_menucard_form"
+        action="action_hotel_menucard_form" parent="menu_hotel_food_item" />
 
     <!-- Hierarchical Tree view of Food Item Category -->
     <record id="hotel_food_category_tree_view" model="ir.ui.view">
@@ -828,7 +828,7 @@
         <field name="view_id" ref="hotel_food_category_tree_view" />
     </record>
 
-    <!-- <menuitem name="Food Items by Category" id="menu_hotel_restaurent_food_category_action"
-        action="hotel_food_category_action" sequence="13" parent="menu_hotel_food_item" /> -->
+    <menuitem name="Food Items by Category" id="menu_hotel_restaurent_food_category_action"
+        action="hotel_food_category_action" sequence="13" parent="menu_hotel_food_item" />
 
 </odoo>

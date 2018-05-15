@@ -241,9 +241,6 @@ class HotelRoom(models.Model):
                                     string='Room Reservation Line')
     product_manager = fields.Many2one('res.users', string='Product Manager')
 
-    rooms = fields.Integer('Number of Rooms', default=0)
-    room_area = fields.Float('Room Area', default=0)
-
     @api.constrains('capacity')
     def check_capacity(self):
         for room in self:
