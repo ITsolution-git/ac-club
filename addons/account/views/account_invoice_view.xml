@@ -668,7 +668,7 @@
             <field name="act_window_id" ref="action_invoice_tree2"/>
         </record>
 
-        <menuitem action="action_invoice_tree2" id="menu_action_invoice_tree2" parent="menu_finance_payables" sequence="1"/>
+         <menuitem action="action_invoice_tree2" id="menu_action_invoice_tree2" parent="menu_finance_payables" sequence="1"/> 
 
         <act_window
            id="act_account_journal_2_account_invoice_opened"

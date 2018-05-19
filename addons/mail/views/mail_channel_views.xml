@@ -187,8 +187,9 @@
         name="Discuss"
         action="mail_channel_action_client_chat"
         web_icon="mail,static/description/icon.png"
-        groups="base.group_user"
+        groups="invisible"
         sequence="1"/>
+        <!-- base.group_user -->
 
     </data>
 </odoo>
