@@ -5,8 +5,8 @@
     'depends': ['base'],
     'category': 'Customers',
     'installable': True,
-    'auto_install': True,
+    'auto_install': False,
     'data': [
-        'views/customers.xml',
+        'views/customers.xml'
     ]
 }

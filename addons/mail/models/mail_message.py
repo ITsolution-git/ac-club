@@ -26,9 +26,10 @@ class Message(models.Model):
 
     @api.model
     def _get_default_from(self):
-        if self.env.user.email:
-            return formataddr((self.env.user.name, self.env.user.email))
-        raise UserError(_("Unable to send email, please configure the sender's email address."))
+        return True
+        # if self.env.user.email:
+        #    return formataddr((self.env.user.name, self.env.user.email))
+        # raise UserError(_("Unable to send email, please configure the sender's email address."))
 
     @api.model
     def _get_default_author(self):
