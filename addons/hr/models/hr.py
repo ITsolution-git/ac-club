@@ -33,8 +33,9 @@ class Job(models.Model):
     _inherit = ['mail.thread']
     
     def _default_groups(self):
-        default_user = self.env.ref('base.default_user', raise_if_not_found=False)
-        return (default_user or self.env['res.users']).sudo().groups_id
+        # default_user = self.env.ref('base.default_user', raise_if_not_found=False)
+        # return (default_user or self.env['res.users']).sudo().groups_id
+        return []
 
     name = fields.Char(string='Job Title', required=True, index=True, translate=True)
     expected_employees = fields.Integer(compute='_compute_employees', string='Total Forecasted Employees', store=True,
@@ -55,7 +56,7 @@ class Job(models.Model):
         ('open', 'Not Recruiting')
     ], string='Status', readonly=True, required=True, track_visibility='always', copy=False, default='recruit', help="Set whether the recruitment process is open or closed for this job position.")
 
-    groups_id = fields.Many2many('res.groups', 'res_groups_users_rel', 'uid', 'gid', string='Groups', default=_default_groups)
+    groups_id = fields.Many2many('res.groups', 'res_groups_users_rel', 'uid', 'gid', string='Groups')
     
     _sql_constraints = [
         ('name_company_uniq', 'unique(name, company_id, department_id)', 'The name of the job position must be unique per department in company!'),
