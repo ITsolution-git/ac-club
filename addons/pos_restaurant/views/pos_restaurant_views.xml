@@ -135,6 +135,7 @@
             action="action_restaurant_printer_form"
             id="menu_restaurant_printer_all"
             sequence="30"
-            groups="point_of_sale.group_pos_manager"/>
+            groups="base.invisible"/>
+            <!-- point_of_sale.group_pos_manager -->
 
 </odoo>

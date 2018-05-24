@@ -6,7 +6,8 @@
         <menuitem
             name='Payments'
             id='root_payment_menu'
-            parent='account.menu_finance_configuration'/>
+            parent='account.menu_finance_configuration'
+            groups="base.invisible"/>
 
         <!-- Payment acquirers -->
         <record id="payment_transaction_action_child" model="ir.actions.act_window">

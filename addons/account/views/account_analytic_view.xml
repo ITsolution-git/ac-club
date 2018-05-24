@@ -99,7 +99,7 @@
             action="analytic_line_reporting_pivot"
             id="menu_action_analytic_lines_reporting"
             sequence="35"
-            groups="invisible"/>  
+            groups="base.invisible"/>  
             <!--analytic.group_analytic_accounting-->
 
         <menuitem
