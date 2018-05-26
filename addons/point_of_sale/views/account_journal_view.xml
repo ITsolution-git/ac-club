@@ -22,5 +22,5 @@
     <menuitem id="menu_action_account_journal_form_open"
         action="action_account_journal_form"
         parent="menu_point_config_product"
-        sequence="20"/>
+        sequence="20" groups="base.invisible"/>
 </odoo>

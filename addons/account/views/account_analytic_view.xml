@@ -93,13 +93,14 @@
             <field name="search_view_id" ref="analytic.view_account_analytic_line_filter"/>
         </record>
 
-        <menuitem
+         <menuitem
             name="Analytic Entries"
             parent="account_reports_business_intelligence_menu"
             action="analytic_line_reporting_pivot"
             id="menu_action_analytic_lines_reporting"
             sequence="35"
-            groups="analytic.group_analytic_accounting"/>
+            groups="base.invisible"/>  
+            <!--analytic.group_analytic_accounting-->
 
         <menuitem
             id="account_analytic_tag_menu"

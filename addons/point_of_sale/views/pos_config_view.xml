@@ -23,7 +23,7 @@
                         <field name="active"/>
                         <field name="currency_id" invisible="1"/>
                     </group>
-                    <separator string="Available Payment Methods" colspan="4"/>
+                    <separator string="Available Payment Methods" colspan="4" groups="base.invisible"/>
                     <field name="journal_ids" colspan="4" nolabel="1" context="{'default_journal_user': 1}">
                         <tree string="Journals">
                             <field name="code" />
@@ -31,7 +31,7 @@
                             <field name="type" />
                         </tree>
                     </field>
-                    <group name="features" string="Features" >
+                    <group name="features" string="Features" groups="base.invisible">
                         <group>
                             <field name="iface_vkeyboard" />
                             <field name="iface_invoicing" />
@@ -47,14 +47,14 @@
                             <field name="iface_print_skip_screen"  attrs="{'invisible' : [('iface_print_auto', '=', False)]}" />
                         </group>
                     </group>
-                    <group string="Hardware Proxy / PosBox" >
+                    <group string="Hardware Proxy / PosBox"  groups="base.invisible">
                         <field name="proxy_ip" />
                         <field name="iface_print_via_proxy" string="Receipt Printer"/>
                         <field name="iface_scan_via_proxy" string="Barcode Scanner"/>
                         <field name="iface_electronic_scale" />
                         <field name="iface_cashdrawer" />
                     </group>
-                    <group string="Cash Control">
+                    <group string="Cash Control"  groups="base.invisible">
                         <field name="cash_control"/>
                         <field name="default_cashbox_lines_ids" attrs="{'invisible': [('cash_control', '=', False)]}">
                             <tree string="Cashbox" editable="bottom">
@@ -64,7 +64,7 @@
                             </tree>
                         </field>
                     </group>
-                    <group name="receipt" string="Receipt" >
+                    <group name="receipt" string="Receipt"  groups="base.invisible">
                         <field name="receipt_header" string="Header" placeholder="A custom receipt header message"/>
                         <field name="receipt_footer" string="Footer" placeholder="A custom receipt footer message"/>
                     </group>
@@ -137,7 +137,7 @@
     </record>
 
     <!-- Barcode Nomenclatures -->
-    <menuitem id="menu_pos_barcode_nomenclature_all" parent="menu_point_config_product" action="barcodes.action_barcode_nomenclature_form" sequence="30"/>
+    <menuitem id="menu_pos_barcode_nomenclature_all" parent="menu_point_config_product" action="barcodes.action_barcode_nomenclature_form" sequence="30" groups="base.invisible"/>
 
     <menuitem id="menu_pos_dashboard" action="action_pos_config_kanban" parent="menu_point_root" name="Dashboard" sequence="1"/>
 </odoo>

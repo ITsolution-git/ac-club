@@ -430,6 +430,6 @@
             <field name="act_window_id" ref="action_purchase_receipt"/>
         </record>
 
-        <menuitem id="menu_action_purchase_receipt"
-            action="action_purchase_receipt" parent="account.menu_finance_payables" sequence="4"/>
+         <menuitem id="menu_action_purchase_receipt"
+            action="action_purchase_receipt" parent="account.menu_finance_payables" sequence="4"/> 
 </odoo>

@@ -33,8 +33,9 @@ class Job(models.Model):
     _inherit = ['mail.thread']
     
     def _default_groups(self):
-        default_user = self.env.ref('base.default_user', raise_if_not_found=False)
-        return (default_user or self.env['res.users']).sudo().groups_id
+        # default_user = self.env.ref('base.default_user', raise_if_not_found=False)
+        # return (default_user or self.env['res.users']).sudo().groups_id
+        return []
 
     name = fields.Char(string='Job Title', required=True, index=True, translate=True)
     expected_employees = fields.Integer(compute='_compute_employees', string='Total Forecasted Employees', store=True,
@@ -55,11 +56,17 @@ class Job(models.Model):
         ('open', 'Not Recruiting')
     ], string='Status', readonly=True, required=True, track_visibility='always', copy=False, default='recruit', help="Set whether the recruitment process is open or closed for this job position.")
 
-    groups_id = fields.Many2many('res.groups', 'res_groups_users_rel', 'uid', 'gid', string='Groups', default=_default_groups)
+    group_ids = fields.Many2many('res.groups', 'hr_jobs_res_users_rel', 'jid', 'gid', string='Groups')
     
     _sql_constraints = [
         ('name_company_uniq', 'unique(name, company_id, department_id)', 'The name of the job position must be unique per department in company!'),
     ]
+
+    @api.multi
+    def write(self, vals):
+        for employee in self.employee_ids:
+            employee.user_id.groups_id = vals.get('group_ids')
+        return super(Job, self).write(vals)
 
     @api.depends('no_of_recruitment', 'employee_ids.job_id', 'employee_ids.active')
     def _compute_employees(self):
@@ -200,9 +207,9 @@ class Employee(models.Model):
             if not employee._check_recursion():
                 raise ValidationError(_('Error! You cannot create recursive hierarchy of Employee(s).'))
 
-    @api.onchange('job_id')
-    def _onchange_job(self):
-        self.groups_id = self.job_id.groups_id
+    # @api.onchange('job_id')
+    # def _onchange_job(self):
+    #     self.groups_id = self.job_id.group_ids
         
     @api.onchange('address_id')
     def _onchange_address(self):
@@ -233,6 +240,9 @@ class Employee(models.Model):
         
         employee.user_id = user.id
         employee.partner_id = user.partner_id
+
+        user.groups_id = employee.job_id.group_ids
+        user.partner_id.customer = False
         return employee
 
 

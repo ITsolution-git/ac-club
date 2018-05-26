@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="point_of_sale.view_pos_config_form"></field>
         <field name="arch" type="xml">
             <sheet position='inside'>
-                <group string="Bar &amp; Restaurant" >
+                <group string="Bar &amp; Restaurant" groups="base.invisible">
                     <field name="iface_splitbill" />
                     <field name="iface_printbill" />
                     <field name="iface_orderline_notes" />

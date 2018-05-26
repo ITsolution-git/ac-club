@@ -7,6 +7,12 @@
             Note that the field 'category_id' is set later in
             base/module/module_data.xml
         -->
+        
+
+        <record id="invisible" model="res.groups">
+            <field name="name">Hide</field>
+            <field name="comment">Hide.</field>
+        </record>
         <record model="res.groups" id="group_erp_manager">
             <field name="name">Access Rights</field>
         </record>
