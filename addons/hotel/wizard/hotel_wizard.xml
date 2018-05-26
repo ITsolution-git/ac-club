@@ -29,6 +29,6 @@
         <field name="target">new</field>
     </record>
 
-    <menuitem name="Hotel Folio Report" action="hotel_folio_wizard" id="wizard_hotel_menu" parent="hotel_report_menu" sequence="31" />
+    <!-- <menuitem name="Hotel Folio Report" action="hotel_folio_wizard" id="wizard_hotel_menu" parent="hotel_report_menu" sequence="31"/> -->
 
 </odoo>

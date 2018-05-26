@@ -110,7 +110,7 @@
         </field>
     </record>
 
-    <menuitem name="States By Reservation" action="action_report_hotel_reservation_status_tree_graph_bar12" id="menu_hotel_reservation_status_tree_graph_bar11" sequence="34" parent="menu_hotel_reporting" />
+    <!-- <menuitem name="States By Reservation" action="action_report_hotel_reservation_status_tree_graph_bar12" id="menu_hotel_reservation_status_tree_graph_bar11" sequence="34" parent="menu_hotel_reporting" /> -->
 
     <!-- Action for report hotel restaurant status -->
     <record id="action_report_hotel_restaurant_board" model="ir.actions.act_window">
@@ -122,6 +122,6 @@
         </field>
     </record>
 
-    <menuitem name="States By Restaurant" action="action_report_hotel_restaurant_board" id="menu_action_report_hotel_restaurant_board" sequence="35" parent="menu_hotel_reporting" />
+    <!-- <menuitem name="States By Restaurant" action="action_report_hotel_restaurant_board" id="menu_action_report_hotel_restaurant_board" sequence="35" parent="menu_hotel_reporting" /> -->
 
 </odoo>

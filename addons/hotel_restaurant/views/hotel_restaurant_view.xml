@@ -12,7 +12,7 @@
         <field name="arch" type="xml">
             <xpath expr="//form/sheet/notebook/page[@name='foreign exchange']"
                 position="after">
-                <page string="Hotel Restaurant">
+                <page string="Hotel Restaurant" invisible="1">
                     <separator string="Restaurant Order Reservation Details"
                         colspan="4" />
                     <field name="hotel_reservation_order_ids" colspan="4"
@@ -647,43 +647,45 @@
                         <page string="Information">
                             <group colspan="4" col="2">
                                 <group colspan="4" col="4">
-                                    <field name="type" select="2" string="Food Type" />
                                     <field name="categ_id" string="Food Item Type" />
-                                    <field name="product_manager" select="2" string="Food Manager" />
-                                    <field name="uom_id" />
-                                    <field name="uom_po_id" />
+                                    <field name="list_price" />
+                                    <field name="active" select="2" />
+                                    <field name="type" select="2" string="Food Type"  invisible="1"/>
+                                    <field name="product_manager" select="2" string="Food Manager" invisible="1"/>
+                                    <field name="uom_id" invisible="1"/>
+                                    <field name="uom_po_id" invisible="1"/>
                                 </group>
                             </group>
                             <newline />
-                            <separator string="Supplier Taxes" colspan='4' />
+                            <!--<separator string="Supplier Taxes" colspan='4' />
                             <field name="supplier_taxes_id" colspan="4"
                                 help='List of supplier taxes applied on the perticular Food Item. ' />
                             <newline />
                             <separator string="Customer Taxes" colspan='4' />
                             <field name="taxes_id" colspan="4"
-                                help='List of customer taxes applied on the perticular Food Item.' />
+                                help='List of customer taxes applied on the perticular Food Item.' />-->
                         </page>
-                        <page string="Procurement">
+                        <!--<page string="Procurement">
                             <group colspan="4" col="4">
-                                <field name="cost_method" />
+                                <field name="cost_method" invisible="1"/>
                                 <field name="active" select="2" />
                                 <field name="list_price" />
-                                <field name="sale_ok" select="2" />
-                                <field name="standard_price" />
-                                <field name="rental" select="2" />
-                                <field name="price_extra" />
+                                <field name="sale_ok" select="2" invisible="1"/>
+                                <field name="standard_price" invisible="1"/>
+                                <field name="rental" select="2" invisible="1"/>
+                                <field name="price_extra" invisible="1"/>
                                 <separator string="Suppliers" colspan='4' />
                                 <field name="seller_ids" colspan="4" nolabel="1"
                                     widget="one2many_list" />
                             </group>
-                        </page>
+                        </page>-->
                         <page string="Descriptions">
                             <separator string="Description" />
                             <field name="description" colspan="4" nolabel="1" />
-                            <separator string="Sale Description" />
+                            <!--<separator string="Sale Description" />
                             <field name="description_sale" colspan="4" nolabel="1" />
                             <separator string="Purchase Description" />
-                            <field name="description_purchase" colspan="4" nolabel="1" />
+                            <field name="description_purchase" colspan="4" nolabel="1" />-->
                         </page>
                     </notebook>
                 </sheet>
@@ -828,7 +830,7 @@
         <field name="view_id" ref="hotel_food_category_tree_view" />
     </record>
 
-    <menuitem name="Food Items by Category" id="menu_hotel_restaurent_food_category_action"
-        action="hotel_food_category_action" sequence="13" parent="menu_hotel_food_item" />
+    <!-- <menuitem name="Food Items by Category" id="menu_hotel_restaurent_food_category_action"
+        action="hotel_food_category_action" sequence="13" parent="menu_hotel_food_item" /> -->
 
 </odoo>

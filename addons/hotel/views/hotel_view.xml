@@ -175,30 +175,32 @@
                     <notebook>
                         <page string="Information">
                             <group colspan="4" col="4">
-                                <field name="type" select="2" string="Amenity Type" />
-                                <field name="categ_id" string="Amenities Category" />
-                                <field name="product_manager" select="2" string="Amenity manager" />
-                                <field name="uom_id" />
-                                <field name="default_code" />
-                                <field name="uom_po_id" />
+                                <field name="categ_id" string="Amenities Category"  />
+                                <field name="list_price" />
+                                <field name="active" select="2" />
+                                <field name="type" select="2" string="Amenity Type"  invisible="1" />
+                                <field name="product_manager" select="2" string="Amenity manager" invisible="1"/>
+                                <field name="uom_id" invisible="1"/>
+                                <field name="default_code" invisible="1"/>
+                                <field name="uom_po_id" invisible="1"/>
                             </group>
                             <newline />
-                            <separator colspan='4' string="Supplier Taxes" />
+                            <!--<separator colspan='4' string="Supplier Taxes" />
                             <field name="supplier_taxes_id" colspan="4" nolabel='1'
                                 help='Define supplier taxes if there any on the ty. ' />
                             <newline />
                             <separator colspan='4' string="Customer Taxes" />
                             <field name="taxes_id" colspan="4" nolabel='1'
-                                help='List of customer taxes applied on the ty. ' />
+                                help='List of customer taxes applied on the ty. ' />-->
                         </page>
-                        <page string="Procurement">
+                        <!--<page string="Procurement">
                             <group colspan="4" col="4">
                                 <field name="active" select="2" />
                                 <field name="list_price" />
-                                <field name="cost_method" string="Cost Method" />
-                                <field name="sale_ok" select="2" />
-                                <field name="standard_price" />
-                                <field name="rental" select="2" />
+                                <field name="cost_method" string="Cost Method" invisible="1"/>
+                                <field name="sale_ok" select="2" invisible="1"/>
+                                <field name="standard_price" invisible="1"/>
+                                <field name="rental" select="2" invisible="1"/>
                             </group>
                             <newline />
                             <group>
@@ -206,7 +208,7 @@
                                 <field name="seller_ids" colspan="4" nolabel="1"
                                     widget="one2many_list" />
                             </group>
-                        </page>
+                        </page>-->
                         <page string="Descriptions">
                             <separator string="Description" />
                             <field name="description" colspan="4" nolabel="1" />
@@ -305,8 +307,8 @@
         <field name="view_id" ref="hotel_amenities_category_tree_view" />
     </record>
 
-    <menuitem name="Amenities by Category" id="menu_hotel_ty_category_action"
-        action="hotel_amenities_category_action" sequence="4" parent="hotel.menu_amenity" />
+    <!-- <menuitem name="Amenities by Category" id="menu_hotel_ty_category_action"
+        action="hotel_amenities_category_action" sequence="4" parent="hotel.menu_amenity" /> -->
 
     <!-- ====== Rooms ====== -->
     <!-- Form view of hotel room -->
@@ -335,18 +337,18 @@
                             <group colspan="4" col="4">
                                 <field name="floor_id" string="Floor" />
                                 <field name="categ_id" select="1" />
-                                <field name="product_manager" select="2" string="Room Manager" />
+                                <field name="product_manager" select="2" string="Room Manager" invisible="1"/>
                                 <field name="capacity" />
                                 <field name="uom_id" invisible="1" />
                             </group>
                             <newline />
-                            <separator colspan='4' string="Supplier Taxes" />
+                            <!--<separator colspan='4' string="Supplier Taxes" />
                             <field name="supplier_taxes_id" colspan="4" nolabel='1'
                                 help='List of supplier taxes if there any on the defined room. ' />
                             <newline />
                             <separator colspan='4' string="Customer Taxes" />
                             <field name="taxes_id" colspan="4" nolabel='1'
-                                help='Customer taxes apply on the perticular room. ' />
+                                help='Customer taxes apply on the perticular room. ' />-->
                         </page>
                         <page string="Room Amenities">
                             <separator string=" Room Amenities" />
@@ -358,21 +360,21 @@
                                 <field name="list_price" />
                                 <field name="rental" select="2" />
                                 <field name="standard_price" />
-                                <field name="cost_method" string="Cost Method" />
+                                <field name="cost_method" string="Cost Method" invisible="1"/>
                                 <newline />
                             </group>
                             <newline />
-                            <group>
+                            <!--<group>
                                 <separator string="Suppliers" />
                                 <field name="seller_ids" colspan="4" nolabel="1"
                                     widget="one2many_list" />
-                            </group>
+                            </group>-->
                         </page>
                         <page string="Descriptions">
                             <separator string="Description" />
                             <field name="description" colspan="4" nolabel="1" />
                         </page>
-                        <page string="Folio Room Reservations">
+                        <!--<page string="Folio Room Reservations">
                             <separator colspan='4' string="Folio Room Reservation Line" />
                             <field name="room_line_ids" colspan="4" nolabel='1'>
                                 <form string=" Room line">
@@ -392,7 +394,7 @@
                                     <field name="status" />
                                 </tree>
                             </field>
-                        </page>
+                        </page>-->
                     </notebook>
                 </sheet>
             </form>
@@ -569,8 +571,8 @@
         <field name="view_id" ref="hotel_room_category_tree_view" />
     </record>
 
-    <menuitem name="Room by Category" id="menu_hotel_room_category_action"
-        action="hotel_room_category_action" sequence="7" parent="hotel.menu_hotel_room" />
+    <!-- <menuitem name="Room by Category" id="menu_hotel_room_category_action"
+        action="hotel_room_category_action" sequence="7" parent="hotel.menu_hotel_room" /> -->
 
     <!--=== Hotel Folio ==== -->
     <!-- Form view of hotel folio -->
@@ -608,8 +610,8 @@
                     </h1>
                     <group colspan="4" col="4">
                         <field name="date_order" readonly="1" />
-                        <field name="warehouse_id" string="Branch" />
-                        <field name="invoice_status" />
+                        <field name="warehouse_id" string="Branch" invisible="1"/>
+                        <field name="invoice_status" invisible="1"/>
                         <field name="hotel_invoice_id" states='sale,done,cancel'
                             readonly="1" />
                     </group>
@@ -619,8 +621,8 @@
                                 <field name="partner_id" string="Guest Name" required="1" />
                                 <field name="partner_invoice_id" domain="[('parent_id','=',partner_id)]" />
                                 <field name="pricelist_id" />
-                                <field name="project_id" />
                                 <field name="partner_shipping_id" domain="[('parent_id','=',partner_id)]" />
+                                <field name="project_id" invisible="1"/>
                             </group>
                             <newline />
                             <group colspan="4" col="4" invisible="1">
@@ -699,7 +701,7 @@
                                                 <field name="product_uom" />
                                                 <field name="product_uom_qty"
                                                     context="{'partner_id':parent.partner_id,'quantity':product_uom_qty,'pricelist':parent.pricelist_id,'hotel':parent.warehouse_id,'uom':product_uom}"
-                                                    invisible="1" />
+                                                     />
                                             </group>
                                             <separator string="Manual Description" colspan="4" />
                                             <field name="name" colspan="4" select="2"
@@ -758,7 +760,7 @@
                             <separator string="Related invoices" colspan="4" />
                             <field name="invoice_ids" colspan="4" nolabel="1" />
                         </page>
-                        <page string="Foreign Exchange" name="foreign exchange">
+                        <page string="Foreign Exchange" name="foreign exchange" invisible="1">
                             <separator string="Foreign Exchange" colspan="4" />
                             <field name="currrency_ids" colspan="4" nolabel="1">
                                 <tree>
@@ -914,31 +916,31 @@
                         <page string="Information">
                             <group>
                                 <group colspan="4" col="4">
-                                    <field name="type" select="2" string="Service Type" />
                                     <field name="categ_id" string="Service Category" />
-                                    <field name="product_manager" select="2" string="Service Manager" />
-                                    <field name="uom_id" />
-                                    <field name="default_code" />
-                                    <field name="uom_po_id" />
+                                    <field name="list_price" />
+                                    <field name="active" select="2" />
+                                    <field name="type" select="2" string="Service Type" invisible="1"/>
+                                    <!-- <field name="product_manager" select="2" string="Service Manager" /> -->
+                                    <field name="uom_id" invisible="1"/>
+                                    <field name="default_code" invisible="1"/>
+                                    <field name="uom_po_id" invisible="1"/>
                                 </group>
                             </group>
                             <newline />
-                            <separator colspan='4' string="Supplier Taxes" />
+                            <!--<separator colspan='4' string="Supplier Taxes" />
                             <field name="supplier_taxes_id" colspan="4" nolabel='1'
                                 help='List of supplier taxes related to the service provided by hotel.' />
                             <newline />
                             <separator colspan='4' string="Customer Taxes" />
                             <field name="taxes_id" colspan="4" nolabel='1'
-                                help='Customer taxes applied on the service.' />
+                                help='Customer taxes applied on the service.' />-->
                         </page>
-                        <page string="Procurement">
+                        <!--<page string="Procurement">
                             <group colspan="4" col="4">
-                                <field name="active" select="2" />
-                                <field name="list_price" />
-                                <field name="cost_method" string="Cost Method" />
-                                <field name="sale_ok" select="2" />
-                                <field name="standard_price" />
-                                <field name="rental" select="2" />
+                                <field name="cost_method" string="Cost Method" invisible="1"/>
+                                <field name="sale_ok" select="2" invisible="1" />
+                                <field name="standard_price" invisible="1"/>
+                                <field name="rental" select="2" invisible="1"/>
                             </group>
                             <newline />
                             <group>
@@ -946,14 +948,14 @@
                                 <field name="seller_ids" colspan="4" nolabel="1"
                                     widget="one2many_list" />
                             </group>
-                        </page>
+                        </page>-->
                         <page string="Descriptions">
                             <separator string="Description" />
                             <field name="description" colspan="4" nolabel="1" />
-                            <separator string="Sale Description" />
+                            <!--<separator string="Sale Description" />
                             <field name="description_sale" colspan="4" nolabel="1" />
                             <separator string="Purchase Description" />
-                            <field name="description_purchase" colspan="4" nolabel="1" />
+                            <field name="description_purchase" colspan="4" nolabel="1" />-->
                         </page>
                     </notebook>
                 </sheet>
@@ -1045,9 +1047,9 @@
         <field name="view_id" ref="hotel_service_category_tree_view" />
     </record>
 
-    <menuitem name="Services by Category" id="menu_hotel_services_categ_action"
+    <!-- <menuitem name="Services by Category" id="menu_hotel_services_categ_action"
         action="hotel_service_categ_action" sequence="10"
-        parent="hotel.menu_hotel_service" />
+        parent="hotel.menu_hotel_service" /> -->
 
     <!--======== Currency ======== -->
     <!-- Form view of currency exchange -->
@@ -1137,8 +1139,8 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Currency Exchange" id="menu_currency_exchange_tree"
+    <!-- <menuitem name="Currency Exchange" id="menu_currency_exchange_tree"
         action="open_currency_exchange_tree" sequence="22"
-        parent="hotel_configuration_menu" />
+        parent="hotel_configuration_menu" /> -->
 
 </odoo>
