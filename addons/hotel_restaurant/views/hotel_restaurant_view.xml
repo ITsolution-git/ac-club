@@ -101,9 +101,9 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Tables"
+    <!--<menuitem name="Tables"
         id="menu_open_view_hotel_restaurant_tables_form_tree" action="open_view_hotel_restaurant_tables_form_tree"
-        parent="hotel.hotel_configuration_menu" />
+        parent="hotel.hotel_configuration_menu" />-->
 
     <!-- ======= Table Reservation ======= -->
     <!-- Form view of hotel restaurant reservation -->
@@ -223,9 +223,9 @@
         <field name="view_id" ref="view_hotel_restaurant_reservation_tree" />
     </record>
 
-    <menuitem name="Table Booking"
+    <!--<menuitem name="Table Booking"
         id="menu_open_view_hotel_restaurant_reservation_form_tree" action="open_view_hotel_restaurant_reservation_form_tree"
-        parent="hotel_restaurant_menu" />
+        parent="hotel_restaurant_menu"/>-->
 
     <!-- ======= Orders for Reservation ======= -->
     <!-- Form view of hotel reservation order -->
@@ -347,9 +347,9 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_open_view_hotel_reservation_order_form_tree"
+    <!--<menuitem id="menu_open_view_hotel_reservation_order_form_tree"
         name="Orders" action="open_view_hotel_reservation_order_form_tree"
-        parent="hotel_restaurant_menu" />
+        parent="hotel_restaurant_menu" />-->
 
     <!-- ======= Table Order ======= -->
     <!-- Form view of hotel restaurant order -->
@@ -481,9 +481,9 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_open_view_hotel_restaurant_order_form_tree"
+    <!--<menuitem id="menu_open_view_hotel_restaurant_order_form_tree"
         name="Table Order" action="open_view_hotel_restaurant_order_form_tree"
-        sequence="11" parent="hotel_restaurant_menu" />
+        sequence="11" parent="hotel_restaurant_menu" />-->
 
 
     <!-- ======= Kitchen Order List ======= -->
@@ -579,10 +579,10 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem name="Kitchen Order Ticket"
+    <!--<menuitem name="Kitchen Order Ticket"
         id="menu_open_view_hotel_restaurant_kitchen_order_tickets_form_tree"
         action="open_view_hotel_restaurant_kitchen_order_tickets_form_tree"
-        sequence="12" parent="hotel_restaurant_menu" />
+        sequence="12" parent="hotel_restaurant_menu" />-->
 
     <!-- ======= Menucard Category ======= -->
     <!-- Form view of hotel menucard type -->
@@ -623,9 +623,9 @@
 
     <menuitem id="menu_hotel_food_item" name="Food Item"
         parent="hotel.hotel_configuration_menu" sequence="2" />
-    <menuitem id="menu_action_hotel_menucard_type_view_form" name="Food Item Types"
+    <!--<menuitem id="menu_action_hotel_menucard_type_view_form" name="Food Item Types"
         action="action_hotel_menucard_type_view_form" parent="menu_hotel_food_item"
-        sequence="12" />
+        sequence="12" />-->
 
     <!-- Form view of hotel menucard -->
     <record model="ir.ui.view" id="view_hotel_menucard_form">
@@ -789,8 +789,8 @@
         </field>
     </record>
 
-    <menuitem name="Food Items" id="menu_open_hotel_menucard_form"
-        action="action_hotel_menucard_form" parent="menu_hotel_food_item" />
+    <!--<menuitem name="Food Items" id="menu_open_hotel_menucard_form"
+        action="action_hotel_menucard_form" parent="menu_hotel_food_item" />-->
 
     <!-- Hierarchical Tree view of Food Item Category -->
     <record id="hotel_food_category_tree_view" model="ir.ui.view">
