@@ -159,6 +159,7 @@
         <menuitem
             action="action_account_fiscal_position_form"
             id="menu_action_account_fiscal_position_form"
+            groups="base.invisible"
             parent="account_account_menu" sequence="3"/>
 
         <!--
