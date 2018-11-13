@@ -11,6 +11,7 @@
     'license': "AGPL-3",
     'demo': ['views/hotel_data.xml'],
     'data': [
+            'data/hotel_data.xml',
             'security/hotel_security.xml',
             'security/ir.model.access.csv',
             'views/hotel_sequence.xml',

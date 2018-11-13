@@ -207,9 +207,10 @@ class Employee(models.Model):
             if not employee._check_recursion():
                 raise ValidationError(_('Error! You cannot create recursive hierarchy of Employee(s).'))
 
-    # @api.onchange('job_id')
-    # def _onchange_job(self):
-    #     self.groups_id = self.job_id.group_ids
+    @api.onchange('job_id')
+    def _onchange_job(self):
+        self.user_id.group_ids = self.job_id.group_ids
+        self.group_ids = self.job_id.group_ids
         
     @api.onchange('address_id')
     def _onchange_address(self):
@@ -246,6 +247,11 @@ class Employee(models.Model):
         return employee
 
 
+    @api.multi
+    def write(self, vals):
+        for employee in self.employee_ids:
+            employee.user_id.groups_id = vals.get('group_ids')
+        return super(Job, self).write(vals)
     @api.multi
     def write(self, vals):
         if 'address_home_id' in vals:

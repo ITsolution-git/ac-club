@@ -259,6 +259,14 @@ class HotelRoom(models.Model):
         if self.isroom is True:
             self.status = 'available'
 
+    @api.model
+    def create(self, vals):
+        room = super(HotelRoom, self).create(vals)
+        category_id = self.env['ir.model.data'].xmlid_to_res_id('hotel.product_category_rooms')
+        room.product_id.write({'categ_id': category_id})
+        return room
+
+
     @api.multi
     def write(self, vals):
         """

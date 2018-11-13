@@ -21,7 +21,7 @@ Sheet, now only Vertical format has been permitted Which is Supported By Odoo.
         'account',
     ],
     'data': [
-        'data/l10n_in_chart_data.xml',
+        'data/l10n_kh_chart_data.xml',
         'data/account_tax_template_data.xml',
         'data/account_chart_template_data.yml',
     ],
