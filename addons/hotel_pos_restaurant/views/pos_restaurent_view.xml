@@ -28,4 +28,16 @@
         </field>
     </record>
 
+
+    <record id="view_point_of_sale_order_form_inherited" model="ir.ui.view">
+        <field name="name">hotel.pos.order.form.inherited</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='order_fields']" position="inside">
+                <field name="folio_id"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>

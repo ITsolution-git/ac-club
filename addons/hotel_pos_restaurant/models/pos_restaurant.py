@@ -15,9 +15,10 @@ class HotelFolio(models.Model):
     _inherit = 'hotel.folio'
     _order = 'folio_pos_order_ids desc'
 
-    folio_pos_order_ids = fields.Many2many('pos.order', 'hotel_pos_rel',
-                                           'hotel_folio_id', 'pos_id',
-                                           'Orders', readonly=True, copy=False)
+    # folio_pos_order_ids = fields.Many2many('pos.order', 'hotel_pos_rel',
+                                           # 'hotel_folio_id', 'pos_id',
+                                           # 'Orders', readonly=True, copy=False)
+    folio_pos_order_ids = fields.One2many(comodel_name='pos.order', inverse_name='folio_id', string='Orders')
 
     @api.multi
     def action_invoice_create(self, grouped=False, states=None):
