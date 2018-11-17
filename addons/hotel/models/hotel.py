@@ -9,7 +9,7 @@ from odoo.osv import expression
 from odoo.tools import misc, DEFAULT_SERVER_DATETIME_FORMAT
 from odoo import models, fields, api, _
 from decimal import Decimal
-
+import json
 
 def _offset_format_timestamp1(src_tstamp_str, src_format, dst_format,
                               ignore_unparsable_time=True, context=None):
@@ -1260,10 +1260,10 @@ class CurrencyExchangeRate(models.Model):
         @param self: object pointer
         '''
         try:
-            url = 'http://finance.yahoo.com/d/quotes.csv?s=%s%s=X&f=l1' % (a,
-                                                                           b)
+            url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=%s&to_currency=%s&apikey=HE2Q8OMSKTIYTQKW' % (a,b)
+            # url = 'http://finance.yahoo.com/d/quotes.csv?s=%s%s=X&f=l1' % (a, b)
             rate = urllib2.urlopen(url).read().rstrip()
-            return Decimal(rate)
+            return Decimal(json.loads(rate)['Realtime Currency Exchange Rate']['5. Exchange Rate'])
         except:
             return Decimal('-1.00')
 
