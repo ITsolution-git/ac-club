@@ -241,6 +241,15 @@ class HotelRoom(models.Model):
                                     string='Room Reservation Line')
     product_manager = fields.Many2one('res.users', string='Product Manager')
 
+    actual_status = fields.Char(compute="_compute_actual_status",
+                              string='Actual Status')
+
+    @api.depends('room_line_ids', 'product_id')
+    def _compute_actual_status(self):
+        
+        for rec in self:
+            rec.actual_status = 'Available'
+
     @api.constrains('capacity')
     def check_capacity(self):
         for room in self:

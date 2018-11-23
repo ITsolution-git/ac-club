@@ -62,11 +62,14 @@ class Job(models.Model):
         ('name_company_uniq', 'unique(name, company_id, department_id)', 'The name of the job position must be unique per department in company!'),
     ]
 
-    @api.multi
+    @api.one
     def write(self, vals):
+        rec = super(Job, self).write(vals)
         for employee in self.employee_ids:
-            employee.user_id.groups_id = vals.get('group_ids')
-        return super(Job, self).write(vals)
+            # employee.user_id.write({'groups_id', (6, False, self.group_ids.ids)})
+            employee.user_id.groups_id = vals.get('group_ids')  
+
+        return rec
 
     @api.depends('no_of_recruitment', 'employee_ids.job_id', 'employee_ids.active')
     def _compute_employees(self):

@@ -492,6 +492,10 @@
                                             <field name="status"></field>
                                         </li>
                                         <li>
+                                            Actual Status:
+                                            <field name="actual_status"></field>
+                                        </li>
+                                        <li>
                                             Rate:
                                             <field name="lst_price"></field>
                                         </li>

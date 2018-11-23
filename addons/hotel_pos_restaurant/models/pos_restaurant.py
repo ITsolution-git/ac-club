@@ -4,10 +4,44 @@
 from odoo import models, fields, api
 
 
+class Partner(models.Model):
+    _inherit = "res.partner"
+
+    folio_ids = fields.One2many('hotel.folio', 'partner_id', 'Hotel Folios')
+
 class PosOrder(models.Model):
     _inherit = "pos.order"
 
     folio_id = fields.Many2one('hotel.folio', 'Folio Number')
+
+    @api.multi
+    def write(self, vals):
+        """
+        Update folio_id when partner_id changes
+        @param self: The object pointer
+        @param vals: dictionary of fields value.
+        """
+
+        folio_id = None
+        for folio in self.partner_id.folio_ids:
+            if folio.state == 'sale':
+                folio_id = folio.id
+
+        vals["folio_id"] = folio_id
+        ret_val = super(PosOrder, self).write(vals)
+        return ret_val
+
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        folio_id = None
+        for folio in self.partner_id.folio_ids:
+            if folio.state == 'sale':
+                folio_id = folio.id
+                
+        self.folio_id = folio_id
+
+        if self.partner_id:
+            self.pricelist = self.partner_id.property_product_pricelist.id
 
 
 class HotelFolio(models.Model):

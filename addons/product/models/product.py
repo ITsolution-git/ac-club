@@ -326,9 +326,13 @@ class ProductProduct(models.Model):
     @api.multi
     def write(self, values):
         ''' Store the standard price change in order to be able to retrieve the cost of a product for a given date'''
-        res = super(ProductProduct, self).write(values)
+        
         if 'standard_price' in values:
             self._set_standard_price(values['standard_price'])
+        if 'categ_id' not in values:
+            category_id = self.env['ir.model.data'].xmlid_to_res_id('product.product_category_all')
+            values['categ_id'] = category_id
+        res = super(ProductProduct, self).write(values)
         return res
 
     @api.multi
