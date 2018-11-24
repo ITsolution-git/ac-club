@@ -9,6 +9,16 @@
     <menuitem id="hotel_report_menu" name="Pdf Reports" sequence="6"
         parent="hotel_management_menu" />
 
+    <template id="assets_backend" name="hotel assets"
+        inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript"
+                src="/hotel/static/src/js/socket.io.js"></script>
+            <script type="text/javascript"
+                src="/hotel/static/src/js/hotel_room_line.js"></script>
+        </xpath>
+    </template>
+
     <record id="view_product_product_form_inherited" model="ir.ui.view">
         <field name="name">view.product.product.form.inherited</field>
         <field name="model">product.product</field>
@@ -636,6 +646,14 @@
                                 nolabel="1"
                                 context="{'checkin':checkin_date,'checkout':checkout_date,'folio':context.get('folio')}">
                                 <form string="Room Line">
+                                    <div class="oe_right oe_button_box">
+                                        <button name="issue_card" string="Issue Card"
+                                            icon="fa-credit-card" class="oe_stat_button" custom="issue_card"/>
+                                        <button name="delete_card" string="Delete Card"
+                                            icon="fa-trash" class="oe_stat_button" custom="delete_card"/>
+                                        <!-- <button name="lost_card" string="Lost Card"
+                                            icon="fa-exclamation-triangle" class="oe_stat_button" style="color: red" custom="lost_card"/> -->
+                                    </div>
                                     <notebook>
                                         <page string="Folio Line">
                                             <group col="6" colspan="4">

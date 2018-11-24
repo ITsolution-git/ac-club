@@ -35,6 +35,8 @@ var Model = require('web.DataModel');
 var utils = require('web.utils');
 var formats = require('web.formats');
 
+var socket = io('http://localhost:31556');
+
 var QWeb = core.qweb;
 var _t = core._t;
 
@@ -1067,6 +1069,11 @@ var ClientListScreenWidget = ScreenWidget.extend({
         this.$('.searchbox .search-clear').click(function(){
             self.clear_search();
         });
+
+        socket.on('pos_customer', function(data){
+            self.$('.searchbox input').val("John Martin");
+            self.perform_search_by_id(data["partner_id"], 1);
+        });
     },
     hide: function () {
         this._super();
@@ -1079,6 +1086,19 @@ var ClientListScreenWidget = ScreenWidget.extend({
             var partner = this.pos.db.get_partner_by_barcode(code.code);
             this.new_client = partner;
             this.display_client_details('show', partner);
+        }
+    },
+    perform_search_by_id(id, associate_result){
+        var customers;
+        if (id) {
+            customers = [this.pos.db.get_partner_by_id(id),];
+            this.display_client_details('hide');
+            if ( associate_result && customers.length === 1){
+                this.new_client = customers[0];
+                this.save_changes();
+                this.gui.back();
+            }
+            this.render_list(customers);
         }
     },
     perform_search: function(query, associate_result){
