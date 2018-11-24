@@ -449,15 +449,16 @@
         <field name="name">hotel.room.kanban</field>
         <field name="model">hotel.room</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="status">
+            <kanban>
                 <field name="name" />
                 <field name="status" />
+                <field name="actual_status" />
                 <field name="color" />
                 <field name="lst_price" />
                 <templates>
                     <t t-name="kanban-box">
                         <div
-                            t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                            t-attf-class="oe_kanban_color_#{kanban_getcolor(record.actual_status.raw_value == 'Occupied' ? 2 : 0)} oe_kanban_card oe_kanban_global_click">
                             <div class="o_dropdown_kanban dropdown" groups="base.group_user">
                                 <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
                                     <span class="fa fa-bars fa-lg" />
@@ -502,6 +503,10 @@
                                             <field name="status"></field>
                                         </li>
                                         <li>
+                                            color:
+                                            <field name="color"></field>
+                                        </li>
+                                        <li>
                                             Rate:
                                             <field name="lst_price"></field>
                                         </li>
@@ -512,11 +517,11 @@
                                     </ul>
                                 </div>
                                 <div class="oe_kanban_bottom_right">
-                                    <a t-if="record.status.raw_value === 'available'" type="object"
+                                    <a t-if="record.actual_status.raw_value === 'Available'" type="object"
                                         string="Available" name="set_room_status_occupied"
                                         class="oe_kanban_status oe_kanban_status_green ">
                                     </a>
-                                    <a t-if="record.status.raw_value === 'occupied'" type="object"
+                                    <a t-if="record.actual_status.raw_value === 'Occupied'" type="object"
                                         string="occupied" name="set_room_status_available"
                                         class="oe_kanban_status oe_kanban_status_red ">
                                     </a>
