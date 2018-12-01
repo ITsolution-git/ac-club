@@ -266,7 +266,7 @@ class HotelRoom(models.Model):
                 timezone = pytz.timezone('UTC')
             d_frm_obj = datetime.datetime.now()\
                 .replace(tzinfo=pytz.timezone('UTC')).astimezone(timezone)
-            d_to_obj = datetime.datetime.now()\
+            d_to_obj = (datetime.datetime.now()+datetime.timedelta(days=1))\
                 .replace(tzinfo=pytz.timezone('UTC')).astimezone(timezone)
             temp_date = d_frm_obj
             while(temp_date <= d_to_obj):
@@ -365,7 +365,8 @@ class HotelRoom(models.Model):
                                     else:
                                         reservline_ids = False
                         fol_room_line_ids = room.room_line_ids.ids
-                        chk_state = ['draft', 'cancel']
+                        # chk_state = ['draft', 'cancel']
+                        chk_state = ['cancel']
                         folio_resrv_ids = (folio_room_line_obj.search
                                             ([('id', 'in', fol_room_line_ids),
                                                 ('check_in', '<=', chk_date),
@@ -1386,7 +1387,7 @@ class CurrencyExchangeRate(models.Model):
                     if rec.rate == Decimal('-1.00'):
                         raise except_orm(_('Warning'),
                                          _('Please Check Your \
-                                         Network Connectivity.'))
+                                         Network Connection.'))
                     rec.out_amount = (float(result) * float(rec.in_amount))
 
     @api.depends('out_amount', 'tax')

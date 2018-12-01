@@ -490,11 +490,7 @@
                                     <ul>
                                         <li>
                                             Status:
-                                            <field name="status"></field>
-                                        </li>
-                                        <li>
-                                            color:
-                                            <field name="color"></field>
+                                            <field name="actual_status"></field>
                                         </li>
                                         <li>
                                             Rate:
@@ -765,7 +761,7 @@
                             <separator string="Related invoices" colspan="4" />
                             <field name="invoice_ids" colspan="4" nolabel="1" />
                         </page>
-                        <page string="Foreign Exchange" name="foreign exchange" invisible="1">
+                        <page string="Foreign Exchange" name="foreign exchange">
                             <separator string="Foreign Exchange" colspan="4" />
                             <field name="currrency_ids" colspan="4" nolabel="1">
                                 <tree>

@@ -24,7 +24,7 @@ class PosOrder(models.Model):
 
         folio_id = None
         for folio in self.partner_id.folio_ids:
-            if folio.state == 'sale':
+            if folio.state == 'sale' or folio.state == 'draft':
                 folio_id = folio.id
 
         vals["folio_id"] = folio_id

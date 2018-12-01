@@ -907,7 +907,8 @@ class RoomReservationSummary(models.Model):
                                     else:
                                         reservline_ids = False
                         fol_room_line_ids = room.room_line_ids.ids
-                        chk_state = ['draft', 'cancel']
+                        # chk_state = ['draft', 'cancel']
+                        chk_state = ['cancel']
                         folio_resrv_ids = (folio_room_line_obj.search
                                            ([('id', 'in', fol_room_line_ids),
                                              ('check_in', '<=', chk_date),
