@@ -244,6 +244,7 @@ class HotelRoom(models.Model):
                                     string='Room Reservation Line')
     product_manager = fields.Many2one('res.users', string='Product Manager')
 
+    cards = fields.Char('cards', default="")
     actual_status = fields.Char(compute="_compute_actual_status",
                               string='Actual Status')
 
