@@ -8,7 +8,8 @@
         -->
         <menuitem name="Sales"
             id="sales_team.menu_base_partner"
-            web_icon="sale,static/description/icon.png"/>
+            web_icon="sale,static/description/icon.png"
+            groups="base.invisible"/>
 
         <menuitem
             id= "menu_sales_config"

@@ -556,8 +556,7 @@ class HotelFolio(models.Model):
     duration = fields.Float('Duration in Days',
                             help="Number of days which will automatically "
                             "count from the check-in and check-out date. ")
-    currrency_ids = fields.One2many('currency.exchange', 'folio_no',
-                                    readonly=True)
+    currrency_ids = fields.One2many('currency.exchange', 'folio_no')
     hotel_invoice_id = fields.Many2one('account.invoice', 'Invoice',
                                        copy=False)
     duration_dummy = fields.Float('Duration Dummy')
