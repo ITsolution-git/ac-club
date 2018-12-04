@@ -5,7 +5,7 @@
     <menuitem id="hotel_management_menu" name="Hotel Management" />
 
     <menuitem id="hotel_configuration_menu" name="Configuration"
-        sequence="20" parent="hotel_management_menu" />
+        sequence="20" parent="hotel_management_menu" groups="hotel.group_hotel_manager"/>
     <menuitem id="hotel_report_menu" name="Pdf Reports" sequence="6"
         parent="hotel_management_menu" />
 
