@@ -204,6 +204,12 @@ class HotelRoomAmenities(models.Model):
                                string='Amenities Category', required=True)
     product_manager = fields.Many2one('res.users', string='Product Manager')
 
+    @api.model
+    def create(self, vals):
+        amenity = super(HotelRoomAmenities, self).create(vals)
+        category_id = self.env['ir.model.data'].xmlid_to_res_id('hotel.product_category_amenities')
+        amenity.product_id.write({'categ_id': category_id})
+        return amenity
 
 class FolioRoomLine(models.Model):
 
@@ -1353,6 +1359,12 @@ class HotelServices(models.Model):
                                required=True)
     product_manager = fields.Many2one('res.users', string='Product Manager')
 
+    @api.model
+    def create(self, vals):
+        service = super(HotelServices, self).create(vals)
+        category_id = self.env['ir.model.data'].xmlid_to_res_id('hotel.product_category_services')
+        service.product_id.write({'categ_id': category_id})
+        return service
 
 class ResCompany(models.Model):
 

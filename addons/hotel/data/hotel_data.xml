@@ -5,5 +5,13 @@
             <field name="parent_id" ref="product.product_category_all"/>
             <field name="name">Rooms</field>
         </record>
+        <record id="product_category_services" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Services</field>
+        </record>
+        <record id="product_category_amenities" model="product.category">
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="name">Amenities</field>
+        </record>
     </data>
 </odoo>
