@@ -276,35 +276,37 @@ class IrUiMenu(models.Model):
 
         current_uid = self._context.get('uid')
         user = self.env['res.users'].browse(current_uid)
+        try:
 
-        if (user.employee_ids and len(user.employee_ids) == 1):
-            if (user.employee_ids[0].job_id is not None):
-                if (user.employee_ids[0].job_id.name == 'Hotel Manager'):
-                    menu_roots = menu_roots
-                    newIds = []
+            if (user.employee_ids and len(user.employee_ids) == 1):
+                if (user.employee_ids[0].job_id is not None):
+                    if (user.employee_ids[0].job_id.name == 'Hotel Manager'):
+                        menu_roots = menu_roots
+                        newIds = []
 
-                    for menu in menu_roots:
-                        if menu.name not in ['Apps']:
-                            newIds.append(menu.id)
-                    menu_roots =  self.search([('id', 'in', newIds)])
-                if (user.employee_ids[0].job_id.name == 'Hotel Staff'):
-                    menu_roots = menu_roots
-                    newIds = []
+                        for menu in menu_roots:
+                            if menu.name not in ['Apps']:
+                                newIds.append(menu.id)
+                        menu_roots =  self.search([('id', 'in', newIds)])
+                    if (user.employee_ids[0].job_id.name == 'Hotel Staff'):
+                        menu_roots = menu_roots
+                        newIds = []
 
-                    for menu in menu_roots:
-                        if menu.name not in ['Apps', 'Point of Sale', 'Sales']:
-                            newIds.append(menu.id)
-                    menu_roots =  self.search([('id', 'in', newIds)])
+                        for menu in menu_roots:
+                            if menu.name not in ['Apps', 'Point of Sale', 'Sales']:
+                                newIds.append(menu.id)
+                        menu_roots =  self.search([('id', 'in', newIds)])
 
-                if (user.employee_ids[0].job_id.name == 'POS Staff'):
-                    menu_roots = menu_roots
-                    newIds = []
+                    if (user.employee_ids[0].job_id.name == 'POS Staff'):
+                        menu_roots = menu_roots
+                        newIds = []
 
-                    for menu in menu_roots:
-                        if menu.name not in ['Apps', 'Hotel Management', 'Sales', 'Invoicing', 'Settings']:
-                            newIds.append(menu.id)
-                    menu_roots =  self.search([('id', 'in', newIds)])
-                    
+                        for menu in menu_roots:
+                            if menu.name not in ['Apps', 'Hotel Management', 'Sales', 'Invoicing', 'Settings']:
+                                newIds.append(menu.id)
+                        menu_roots =  self.search([('id', 'in', newIds)])
+        except:
+            pass
         
         menu_roots_data = menu_roots.read(fields) if menu_roots else []
         menu_root = {
