@@ -8,11 +8,11 @@
     <!-- Account Tax Templates -->
 
     <record id="input_tax_15" model="account.tax.template">
-        <field name="name">(standard)Tax @ 10%</field>
-        <field name="description">(standard)Tax @ 15%</field>
+        <field name="name">(standard)Tax @ 0%</field>
+        <field name="description">(standard)Tax @ 0%</field>
         <field name="type_tax_use">sale</field>
         <field name="amount_type">percent</field>
-        <field name="amount">10</field>
+        <field name="amount">0</field>
         <field name="sequence">1</field>
         <field name="account_id" ref="p11235"/>
         <field name="refund_account_id" ref="p20011"/>

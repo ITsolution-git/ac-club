@@ -42,7 +42,7 @@
                                     <field name="email"/>
                                     <field name="vat" invisible="1"/>
                                     <field name="company_registry"  invisible="1"/>
-                                    <field name="currency_id" options="{'no_create': True}" id="company_currency" invisible="1"/>
+                                    <field name="currency_id" options="{'no_create': True}" id="company_currency" />
                                     <field name="parent_id"  groups="base.group_multi_company"  invisible="1"/>
                                     <field name="sequence" invisible="1" />
                                 </group>
