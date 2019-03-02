@@ -277,7 +277,7 @@ class IrUiMenu(models.Model):
         current_uid = self._context.get('uid')
         user = self.env['res.users'].browse(current_uid)
 
-        if (len(user.employee_ids) == 1):
+        if (user.employee_ids and len(user.employee_ids) == 1):
             if (user.employee_ids[0].job_id is not None):
                 if (user.employee_ids[0].job_id.name == 'Hotel Manager'):
                     menu_roots = menu_roots
