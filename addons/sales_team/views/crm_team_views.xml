@@ -8,9 +8,9 @@
 
     <menuitem id="menu_sales" name="Sales" parent="menu_base_partner" sequence="5"/>
         <menuitem id="menu_partner_form" parent="menu_sales" action="base.action_partner_form" sequence="3"/>
-
+    <!-- groups="group_sale_manager"   -->
     <menuitem id="menu_sale_config" name="Configuration" parent="menu_base_partner"
-    sequence="100" groups="group_sale_manager"/>
+    sequence="100" groups="base.invisible"/>
         <menuitem id="menu_sale_general_settings" name="Settings" parent="menu_sale_config"
             sequence="0" action="action_sale_config" groups="base.group_system"/>
 
@@ -169,8 +169,8 @@
                 <script type="text/javascript" src="/sales_team/static/src/js/sales_team_dashboard.js"></script>
             </xpath>
         </template>
-
-        <menuitem id="menu_sale_report" name="Reports" parent="sales_team.menu_base_partner" sequence="99" groups="sales_team.group_sale_manager"/>
+        <!-- groups="sales_team.group_sale_manager" -->
+        <menuitem id="menu_sale_report" name="Reports" parent="sales_team.menu_base_partner" sequence="99" groups="base.invisible"/>
 
         <record id="sales_team_config_action" model="ir.actions.act_window">
             <field name="name">Sales Teams</field>
@@ -193,7 +193,8 @@
         <menuitem name="Sales Teams"
             id="sales_team_config"
             parent="sales_team.menu_sale_config"
-            action="sales_team_config_action"/>
+            action="sales_team_config_action"
+            groups="base.invisible"/>
 
     </data>
 </odoo>

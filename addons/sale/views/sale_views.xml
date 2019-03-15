@@ -477,7 +477,7 @@
         </record>
         <menuitem name="Invoicing"
             id="menu_sale_invoicing" parent="sales_team.menu_base_partner"
-            sequence="5"/>
+            sequence="5" groups="base.invisible"/>
         <menuitem action="action_orders_to_invoice"
             id="menu_sale_order_invoice" parent="sale.menu_sale_invoicing"
             sequence="2"/>
