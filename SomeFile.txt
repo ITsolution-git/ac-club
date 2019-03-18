@@ -1,0 +1,76 @@
+Running as user 'root' is a security risk.
+2019-03-15 21:59:45,500 16379 INFO ? odoo: Odoo version 10.0
+2019-03-15 21:59:45,501 16379 INFO ? odoo: addons paths: ['/root/.local/share/Odoo/addons/10.0', u'/root/ac-club/odoo/addons', u'/root/ac-club/addons']
+2019-03-15 21:59:45,501 16379 INFO ? odoo: database: test@default:default
+2019-03-15 21:59:45,510 16379 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0.0.0.0:8069
+Exception in thread odoo.service.httpd:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 754, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/root/ac-club/odoo/service/server.py", line 247, in http_thread
+    self.httpd = ThreadedWSGIServerReloadable(self.interface, self.port, app)
+  File "/root/ac-club/odoo/service/server.py", line 105, in __init__
+    handler=RequestHandler)
+  File "/root/env/local/lib/python2.7/site-packages/werkzeug/serving.py", line 464, in __init__
+    HTTPServer.__init__(self, (host, int(port)), handler)
+  File "/usr/lib/python2.7/SocketServer.py", line 417, in __init__
+    self.server_bind()
+  File "/root/ac-club/odoo/service/server.py", line 115, in server_bind
+    super(ThreadedWSGIServerReloadable, self).server_bind()
+  File "/usr/lib/python2.7/BaseHTTPServer.py", line 108, in server_bind
+    SocketServer.TCPServer.server_bind(self)
+  File "/usr/lib/python2.7/SocketServer.py", line 431, in server_bind
+    self.socket.bind(self.server_address)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 98] Address already in use
+
+2019-03-16 02:19:58,777 16379 INFO ? odoo.service.server: Initiating shutdown
+2019-03-16 02:19:58,777 16379 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown.
+Running as user 'root' is a security risk.
+2019-03-16 02:19:59,480 16379 INFO ? odoo: Odoo version 10.0
+2019-03-16 02:19:59,481 16379 INFO ? odoo: addons paths: ['/root/.local/share/Odoo/addons/10.0', u'/root/ac-club/odoo/addons', u'/root/ac-club/addons']
+2019-03-16 02:19:59,481 16379 INFO ? odoo: database: test@default:default
+2019-03-16 02:19:59,489 16379 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0.0.0.0:8069
+2019-03-16 20:51:33,246 16379 WARNING ? odoo.api: Deprecated method Employee.import_file in module odoo.addons.hr.models.hr
+2019-03-16 20:51:33,484 16379 INFO ? odoo.addons.report.models.report: Will use the Wkhtmltopdf binary at /usr/bin/wkhtmltopdf
+2019-03-16 20:51:33,765 16379 INFO ? odoo.http: HTTP Configuring static files
+2019-03-16 20:51:33,780 16379 INFO 3-1 odoo.modules.loading: loading 1 modules...
+2019-03-16 20:51:33,821 16379 INFO 3-1 odoo.modules.loading: 1 modules loaded in 0.04s, 0 queries
+2019-03-16 20:51:33,879 16379 INFO 3-1 odoo.modules.loading: loading 53 modules...
+2019-03-16 20:51:34,116 16379 INFO 3-1 odoo.modules.loading: 53 modules loaded in 0.24s, 0 queries
+2019-03-16 20:51:35,358 16379 INFO 3-1 odoo.modules.loading: Modules loaded.
+2019-03-16 20:51:35,366 16379 INFO 3-1 odoo.addons.base.ir.ir_http: Generating routing map
+2019-03-16 20:51:35,481 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:35] "GET / HTTP/1.1" 200 -
+2019-03-16 20:51:37,989 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:37] "GET /web HTTP/1.1" 200 -
+2019-03-16 20:51:38,260 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:38] "GET /web/content/246-80cc2e4/web.assets_common.0.css HTTP/1.1" 200 -
+2019-03-16 20:51:38,461 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:38] "GET /web/content/394-4ab89ba/web.assets_backend.0.css HTTP/1.1" 200 -
+2019-03-16 20:51:38,529 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:38] "GET /web/content/249-b9d4cfc/web_editor.summernote.0.css HTTP/1.1" 200 -
+2019-03-16 20:51:38,548 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:38] "GET /web/content/395-4ab89ba/web.assets_backend.1.css HTTP/1.1" 200 -
+2019-03-16 20:51:38,556 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:38] "GET /web/content/250-4c0329c/web_editor.assets_editor.0.css HTTP/1.1" 200 -
+2019-03-16 20:51:38,749 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:38] "GET /web/content/251-80cc2e4/web.assets_common.js HTTP/1.1" 200 -
+2019-03-16 20:51:39,045 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:39] "GET /web/content/396-4ab89ba/web.assets_backend.js HTTP/1.1" 200 -
+2019-03-16 20:51:39,342 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:39] "GET /web/content/253-b9d4cfc/web_editor.summernote.js HTTP/1.1" 200 -
+2019-03-16 20:51:39,382 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:39] "GET /web/content/254-4c0329c/web_editor.assets_editor.js HTTP/1.1" 200 -
+2019-03-16 20:51:39,549 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:39] "GET /web/binary/company_logo HTTP/1.1" 200 -
+2019-03-16 20:51:42,423 16379 INFO ? werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:42] "GET /web_editor/static/src/xml/ace.xml HTTP/1.1" 200 -
+2019-03-16 20:51:42,507 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:42] "POST /web/dataset/call HTTP/1.1" 200 -
+2019-03-16 20:51:42,707 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:42] "GET /web/webclient/qweb?mods=web,web_kanban,base,bus,web_tour,mail,report,product,web_planner,account,account_bank_statement_import,barcodes,point_of_sale,pos_mercury,sales_team,sale,sale_stock,hotel,hotel_pos_restaurant,web_editor,board,hotel_restaurant,stock,hotel_reservation,report_hotel_reservation,report_hotel_restaurant,board_frontdesk,pos_restaurant,pos_reprint,web_settings_dashboard,l10n_kh,hotel_housekeeping,hr,base_import,web_calendar,portal,payment,web_diagram,hotel_management,payment_transfer,web_kanban_gauge HTTP/1.1" 200 -
+2019-03-16 20:51:42,991 16379 INFO ? werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:42] "GET /web_editor/static/src/xml/editor.xml HTTP/1.1" 200 -
+2019-03-16 20:51:43,664 16379 INFO ? werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:43] "GET /web_editor/static/src/xml/snippets.xml HTTP/1.1" 200 -
+2019-03-16 20:51:44,173 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:44] "POST /web/webclient/translations HTTP/1.1" 200 -
+2019-03-16 20:51:44,405 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:44] "GET /web/webclient/locale/en_US HTTP/1.1" 200 -
+2019-03-16 20:51:44,843 16379 INFO ? werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:44] "GET /web/static/lib/fontawesome/fonts/fontawesome-webfont.woff2?v=4.5.0 HTTP/1.1" 200 -
+2019-03-16 20:51:45,012 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:45] "POST /web/dataset/call_kw/res.users/read HTTP/1.1" 200 -
+2019-03-16 20:51:45,251 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:45] "GET /web/image?model=res.users&field=image_small&id=6 HTTP/1.1" 200 -
+2019-03-16 20:51:45,591 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:45] "POST /mail/client_action HTTP/1.1" 200 -
+2019-03-16 20:51:45,731 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:45] "POST /web/action/load HTTP/1.1" 200 -
+2019-03-16 20:51:45,821 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:45] "POST /web/dataset/search_read HTTP/1.1" 200 -
+2019-03-16 20:51:45,836 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:45] "GET /web/binary/company_logo?db=3-1&company=1 HTTP/1.1" 200 -
+2019-03-16 20:51:45,936 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:45] "POST /web/menu/load_needaction HTTP/1.1" 200 -
+2019-03-16 20:51:46,344 16379 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres
+2019-03-16 20:51:46,376 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:46] "POST /web/dataset/call_kw/mail.message/fields_view_get HTTP/1.1" 200 -
+2019-03-16 20:51:46,905 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:46] "POST /web/dataset/call_kw/ir.filters/get_filters HTTP/1.1" 200 -
+2019-03-16 20:51:47,369 16379 INFO 3-1 werkzeug: 110.74.200.136 - - [16/Mar/2019 20:51:47] "POST /web/dataset/call_kw/mail.message/message_fetch HTTP/1.1" 200 -
