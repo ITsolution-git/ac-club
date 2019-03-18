@@ -35,7 +35,7 @@ var Model = require('web.DataModel');
 var utils = require('web.utils');
 var formats = require('web.formats');
 
-var socket = io('http://localhost:31556');
+var socket = io('http://167.99.88.10:31556');
 
 var QWeb = core.qweb;
 var _t = core._t;

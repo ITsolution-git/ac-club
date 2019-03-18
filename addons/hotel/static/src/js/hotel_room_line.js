@@ -5,7 +5,7 @@ odoo.define('hotel.hotel_room_line', function (require) {
 	// const io = require('socket.io-client');
 	var _t = core._t;
 	var QWeb = core.qweb;
-	var socket = io('http://localhost:31556');
+	var socket = io('http://167.99.88.10:31556');
 	var NotificationManager = require('web.notification').NotificationManager;
 	console.log("socket connect!");
 
