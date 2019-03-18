@@ -198,6 +198,7 @@ class Partner(models.Model, FormatAddress):
     street2 = fields.Char()
     zip = fields.Char(change_default=True)
     city = fields.Char()
+    card_no = fields.Char(default='')
     state_id = fields.Many2one("res.country.state", string='State', ondelete='restrict')
     country_id = fields.Many2one('res.country', string='Country', ondelete='restrict')
     email = fields.Char()

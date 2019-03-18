@@ -169,6 +169,7 @@ class Employee(models.Model):
     street = fields.Char(related='user_id.partner_id.street')
     street2 = fields.Char(related='user_id.partner_id.street2')
     zip = fields.Char(related='user_id.partner_id.zip')
+    card_no = fields.Char(related='user_id.partner_id.card_no')
     city = fields.Char(related='user_id.partner_id.city')
     state_id = fields.Many2one(related='user_id.partner_id.state_id')
     country_id = fields.Many2one(related='user_id.partner_id.country_id')

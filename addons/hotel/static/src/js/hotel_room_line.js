@@ -12,7 +12,7 @@ odoo.define('hotel.hotel_room_line', function (require) {
 	form_widget.WidgetButton.include({
 		on_click: function() {
 			if(this.node.attrs.custom === "issue_card"){
-				if (this.field_manager.datarecord.state == "sale"){
+				if (this.field_manager.datarecord.state == "sale" || this.field_manager.datarecord.state == "draft"){
 					socket.emit('issue_card', this.field_manager.datarecord);
 				} else {
 					if (!this.connection_notification) {
@@ -30,6 +30,18 @@ odoo.define('hotel.hotel_room_line', function (require) {
 			else if (this.node.attrs.custom === "delete_card") {
 				socket.emit('delete_card', this.field_manager.datarecord);
 				return;
+			}
+			else if(this.node.attrs.custom === "issue_card_hr"){
+				socket.emit('issue_card_hr', this.field_manager.datarecord);
+			}
+			else if(this.node.attrs.custom === "delete_card_hr"){
+				socket.emit('delete_card_hr', this.field_manager.datarecord);
+			}
+			else if(this.node.attrs.custom === "issue_card_customer"){
+				socket.emit('issue_card_hr', this.field_manager.datarecord);
+			}
+			else if(this.node.attrs.custom === "delete_card_customer"){
+				socket.emit('delete_card_hr', this.field_manager.datarecord);
 			}
 			this._super();
 		},
