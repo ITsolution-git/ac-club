@@ -30,6 +30,16 @@
             groups="group_hr_manager"
             sequence="100"/>
 
+        <template id="assets_backend" name="human resource assets"
+        inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript"
+                    src="/hotel/static/src/js/socket.io.js"></script>
+                <script type="text/javascript"
+                    src="/hotel/static/src/js/hotel_room_line.js"></script>
+            </xpath>
+        </template>
+
         <!-- Employee -->
         <record id="view_employee_form" model="ir.ui.view">
             <field name="name">hr.employee.form</field>
@@ -46,6 +56,11 @@
                                 <field name="active" widget="boolean_button"
                                     options='{"terminology": "archive"}'/>
                             </button>
+                            <button name="issue_card" string="Issue Card"
+                                            icon="fa-credit-card" class="oe_stat_button" custom="issue_card_hr"/>
+                            <button name="delete_card" string="Delete Card"
+                                icon="fa-trash" class="oe_stat_button" custom="delete_card_hr"/>
+                            
                         </div>
                         <field name="image" widget='image' class="oe_avatar" options='{"preview_image":"image_medium"}'/>
                         <div class="oe_title">
@@ -78,6 +93,8 @@
                                         <field name="parent_id" invisible="1"/>
                                         <field name="coach_id" invisible="1"/>
                                         <field name="calendar_id"  invisible="1"/>
+
+                                        <field name="card_no" readonly="1"/>
                                     </group>
 
                                 </group>

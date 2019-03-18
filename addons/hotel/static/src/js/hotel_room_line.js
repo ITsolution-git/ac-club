@@ -31,6 +31,18 @@ odoo.define('hotel.hotel_room_line', function (require) {
 				socket.emit('delete_card', this.field_manager.datarecord);
 				return;
 			}
+			else if(this.node.attrs.custom === "issue_card_hr"){
+				socket.emit('issue_card_hr', this.field_manager.datarecord);
+			}
+			else if(this.node.attrs.custom === "delete_card_hr"){
+				socket.emit('delete_card_hr', this.field_manager.datarecord);
+			}
+			else if(this.node.attrs.custom === "issue_card_customer"){
+				socket.emit('issue_card_hr', this.field_manager.datarecord);
+			}
+			else if(this.node.attrs.custom === "delete_card_customer"){
+				socket.emit('delete_card_hr', this.field_manager.datarecord);
+			}
 			this._super();
 		},
 	});
